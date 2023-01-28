@@ -13,6 +13,8 @@
     <None Remove="img\MainWindow\tabGroup\iconDelete.png" />
     <None Remove="img\MainWindow\tabGroup\iconUpdate.png" />
     <None Remove="img\MainWindow\tabGroup\lupa.png" />
+    <None Remove="img\WindowCreate\back.png" />
+    <None Remove="img\WindowCreate\save.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +37,12 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\MainWindow\tabGroup\lupa.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\WindowCreate\back.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\WindowCreate\save.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

@@ -6,7 +6,7 @@
         xmlns:vm="clr-namespace:WordAndSQL_Core.ViewModels" 
         xmlns:local="clr-namespace:WordAndSQL_Core"
         mc:Ignorable="d"
-        Title="{Binding Title}" 
+        Title="Система управления обучения" 
         MinHeight="570" MinWidth="850" Height="600" Width="1000" FontFamily="Times New Roman" WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -58,7 +58,48 @@
                             
                         </StackPanel>
 
-                        
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="25,0,0,0">
+                            <Button Style="{StaticResource SButton}"
+                                    Width="150" Height="40"
+                                    VerticalAlignment="Center"
+                                    Margin="20 0"
+                                    Command="{Binding OpenApplicationCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="25" Height="25" Margin="2">
+                                        <Image Source="/img/MainWindow/tabGroup/iconCreate.png"></Image>
+                                    </ContentControl>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                               Margin="2" FontSize="16">Добавить</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource SButton}" 
+                                    Width="150" Height="40" 
+                                    VerticalAlignment="Center" 
+                                    Margin="20 0"
+                                    Command="{Binding UpdateApplicationCommand}">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="25" Height="25" Margin="2">
+                                        <Image Source="/img/MainWindow/tabGroup/iconUpdate.png"></Image>
+                                    </ContentControl>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                               Margin="2" 
+                                               FontSize="16">Изменить</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource SButton}" 
+                                    Width="150" Height="40" 
+                                    VerticalAlignment="Center" 
+                                    Margin="20 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="25" Height="25" Margin="2">
+                                        <Image Source="/img/MainWindow/tabGroup/iconDelete.png"></Image>
+                                    </ContentControl>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                               Margin="2" 
+                                               FontSize="16">Удалить</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
@@ -107,54 +148,53 @@
 
                         </StackPanel>
 
-                    </Grid>
-                </TabItem.Content>
-            </TabItem>
-
-            <StackPanel Grid.Row="2"
+                        <StackPanel Grid.Row="2"
                                     Orientation="Horizontal" 
                                     Margin="25,0,0,0">
-                <Button Style="{StaticResource SButton}"
+                            <Button Style="{StaticResource SButton}"
                                     Width="150" Height="40"
                                     VerticalAlignment="Center"
                                     Margin="20 0">
-                    <StackPanel Orientation="Horizontal">
-                        <ContentControl Width="25" Height="25" Margin="2">
-                            <Image Source="/img/MainWindow/tabGroup/iconCreate.png"></Image>
-                        </ContentControl>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="25" Height="25" Margin="2">
+                                        <Image Source="/img/MainWindow/tabGroup/iconCreate.png"></Image>
+                                    </ContentControl>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
                                                Margin="2" 
                                                FontSize="16">Добавить</TextBlock>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource SButton}" 
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource SButton}" 
                                     Width="150" Height="40" 
                                     VerticalAlignment="Center" 
                                     Margin="20 0">
-                    <StackPanel Orientation="Horizontal">
-                        <ContentControl Width="25" Height="25" Margin="2">
-                            <Image Source="/img/MainWindow/tabGroup/iconUpdate.png"></Image>
-                        </ContentControl>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="25" Height="25" Margin="2">
+                                        <Image Source="/img/MainWindow/tabGroup/iconUpdate.png"></Image>
+                                    </ContentControl>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
                                                Margin="2"
                                                FontSize="16">Изменить</TextBlock>
-                    </StackPanel>
-                </Button>
-                <Button Style="{StaticResource SButton}"
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource SButton}"
                                     Width="150" Height="40" 
                                     VerticalAlignment="Center" 
                                     Margin="20 0"
                                     Command="{Binding CloseApplicationCommand}">
-                    <StackPanel Orientation="Horizontal">
-                        <ContentControl Width="25" Height="25" Margin="2">
-                            <Image Source="/img/MainWindow/tabGroup/iconDelete.png"></Image>
-                        </ContentControl>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="25" Height="25" Margin="2">
+                                        <Image Source="/img/MainWindow/tabGroup/iconDelete.png"></Image>
+                                    </ContentControl>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
                                                Margin="2" 
                                                FontSize="16">Удалить</TextBlock>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

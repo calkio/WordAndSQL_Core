@@ -7,30 +7,43 @@ using System.Windows.Input;
 using System.Windows;
 using WordAndSQL_Core.ViewModels.Base;
 using WordAndSQL_Core.Infastructure.Commands;
+using WordAndSQL_Core.Views.Windows;
 
 namespace WordAndSQL_Core.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
-        private string _Title = "123";
-
-        public string Title
-        {
-            get => _Title;
-            set => Set(ref _Title, value);
-        }
 
         #region Команды
 
-        #region Команда закрыть окно
+        #region Команда открытия окна добавления
 
-        public ICommand CloseApplicationCommand { get; }
+        public ICommand OpenApplicationCommand { get; }
 
-        private bool CanCloseApplicationCommandExecute(object p) => true;
+        private bool CanOpenApplicationCommandExecute(object p) => true;
 
-        private void OnCloseApplicationCommandExecuted(object p)
+        private void OnOpenApplicationCommandExecuted(object p)
         {
-            Application.Current.Shutdown();
+            CreateGroup createGroup = new CreateGroup();
+            createGroup.Owner = Application.Current.MainWindow;
+            createGroup.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            createGroup.ShowDialog();
+        }
+
+        #endregion
+
+        #region Команда открытия окна изменения
+
+        public ICommand UpdateApplicationCommand { get; }
+
+        private bool CanUpdateApplicationCommandExecute(object p) => true;
+
+        private void OnUpdateApplicationCommandExecuted(object p)
+        {
+            UpdateGroup UpdateGroup = new UpdateGroup();
+            UpdateGroup.Owner = Application.Current.MainWindow;
+            UpdateGroup.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            UpdateGroup.ShowDialog();
         }
 
         #endregion
@@ -41,7 +54,8 @@ namespace WordAndSQL_Core.ViewModels
         {
             #region Команды
 
-            CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
+            OpenApplicationCommand = new LambdaCommand(OnOpenApplicationCommandExecuted, CanOpenApplicationCommandExecute);
+            UpdateApplicationCommand = new LambdaCommand(OnUpdateApplicationCommandExecuted, CanUpdateApplicationCommandExecute);
 
             #endregion
 
