@@ -7,13 +7,15 @@
         xmlns:local="clr-namespace:WordAndSQL_Core"
         mc:Ignorable="d"
         Title="Система управления обучения" 
-        MinHeight="570" MinWidth="850" Height="600" Width="1000" FontFamily="Times New Roman" WindowStartupLocation="CenterScreen">
+        MinHeight="570" MinWidth="850" Height="600" Width="1000" 
+        FontFamily="Times New Roman" 
+        WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     <Grid Background="#ccebcc">
         <TabControl Background="#dff0df">
-            <TabItem FontFamily="Times New Roman">
+            <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Style="{StaticResource STextBlock}" Margin="3">Группы</TextBlock>
@@ -21,13 +23,17 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="121*"/>
+                            <ColumnDefinition Width="873*"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100"></RowDefinition>
                             <RowDefinition ></RowDefinition>
                             <RowDefinition Height="70"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <DockPanel Grid.Row="0" Grid.ColumnSpan="2">
                             <Image Source="/img/MainWindow/tabGroup/groupPeople.png" Height="70" HorizontalAlignment="Left" Margin="10,15,10,10"></Image>
                             <TextBlock TextWrapping="Wrap" 
                                        Width="290" 
@@ -35,34 +41,36 @@
                                        VerticalAlignment="Center" 
                                        Margin="5">Добавление и редактирование информации о группах слушателей</TextBlock>
                             <TextBlock TextWrapping="Wrap" 
-                                       Width="170" 
                                        FontSize="14" 
                                        VerticalAlignment="Center" 
-                                       Margin="5">Поиск по названию группы:</TextBlock>
-                        </StackPanel>
-                        <TextBox Style="{StaticResource STextBox}" 
-                                 MinWidth="150" 
-                                 Grid.Row="0" 
-                                 Margin="575,0,70,0" 
-                                 VerticalAlignment="Center"></TextBox>
-                        <Button Style="{StaticResource SButton}" 
-                                Width="22" Height="22" 
-                                Background="White" 
-                                Margin="10,0,40,0" 
-                                VerticalAlignment="Center" HorizontalAlignment="Right">
-                            
-                            <Image Source="/img/MainWindow/tabGroup/lupa.png"></Image>
-                        </Button>
+                                       Margin="10">Поиск по названию группы:</TextBlock>
+                            <TextBox Style="{StaticResource STextBox}" 
+                                    MinWidth="150"
+                                    Height="25" Width="350"
+                                    VerticalAlignment="Center"/>
+                            <Button Style="{StaticResource SButton}" 
+                                    Width="22" Height="22" 
+                                    Margin="7"
+                                    VerticalContentAlignment="Center"
+                                    VerticalAlignment="Center" HorizontalAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <ContentControl>
+                                            <Image Source="/img/WindowUpdate/lupa.png"></Image>
+                                        </ContentControl>
+                                    </StackPanel>
+                            </Button>
+                        </DockPanel>
+                        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
 
-                        <StackPanel Grid.Row="1">
-                            
                         </StackPanel>
 
-                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="25,0,0,0">
+                        <StackPanel Grid.Row="2" 
+                                    Orientation="Horizontal" 
+                                    Grid.ColumnSpan="2" Grid.RowSpan="2">
                             <Button Style="{StaticResource SButton}"
                                     Width="150" Height="40"
                                     VerticalAlignment="Center"
-                                    Margin="20 0"
+                                    Margin="50,0,20,0"
                                     Command="{Binding OpenApplicationCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <ContentControl Width="25" Height="25" Margin="2">
@@ -110,14 +118,14 @@
                     </StackPanel>
                 </TabItem.Header>
                 <TabItem.Content>
-                    <Grid x:Name="contentUsersTab">
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100"></RowDefinition>
                             <RowDefinition ></RowDefinition>
                             <RowDefinition Height="70"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="3">
                             <Image Source="/img/MainWindow/tabGroup/groupPeople.png" Height="70" HorizontalAlignment="Left" Margin="10,15,10,10"></Image>
                             <TextBlock TextWrapping="Wrap" 
                                        Width="290" 
@@ -125,36 +133,34 @@
                                        FontFamily="Times New Roman" 
                                        VerticalAlignment="Center" 
                                        Margin="5">Добавление и редактирование информации о слушателях</TextBlock>
-                            <TextBlock TextWrapping="Wrap"
-                                       Width="170" FontSize="14" 
-                                       FontFamily="Times New Roman"
+                            <TextBlock TextWrapping="Wrap" 
+                                       FontSize="14" 
                                        VerticalAlignment="Center" 
-                                       Margin="5">Поиск по названию группы:</TextBlock>
+                                       Margin="10">Поиск слушателя:</TextBlock>
+                            <TextBox Style="{StaticResource STextBox}" 
+                                    MinWidth="150"
+                                    Height="25" Width="350"
+                                    VerticalAlignment="Center"/>
+                            <Button Style="{StaticResource SButton}" 
+                                    Width="22" Height="22" 
+                                    Margin="7"
+                                    VerticalContentAlignment="Center"
+                                    VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl>
+                                        <Image Source="/img/WindowUpdate/lupa.png"></Image>
+                                    </ContentControl>
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
-                        <TextBox Style="{StaticResource STextBox}" 
-                                 Grid.Row="0"
-                                 MinWidth="150" 
-                                 Margin="575,0,70,0" 
-                                 VerticalAlignment="Center"></TextBox>
-                        <Button Style="{StaticResource SButton}" 
-                                Width="22" Height="22" 
-                                Background="White" 
-                                Margin="10,0,40,0"
-                                VerticalAlignment="Center" HorizontalAlignment="Right">
-                            <Image Source="/img/MainWindow/tabGroup/lupa.png"></Image>
-                        </Button>
-
-                        <StackPanel Grid.Row="1">
-
-                        </StackPanel>
-
+                        
                         <StackPanel Grid.Row="2"
                                     Orientation="Horizontal" 
-                                    Margin="25,0,0,0">
+                                    Grid.ColumnSpan="2" Grid.RowSpan="2">
                             <Button Style="{StaticResource SButton}"
                                     Width="150" Height="40"
                                     VerticalAlignment="Center"
-                                    Margin="20 0">
+                                    Margin="50,0,20,0">
                                 <StackPanel Orientation="Horizontal">
                                     <ContentControl Width="25" Height="25" Margin="2">
                                         <Image Source="/img/MainWindow/tabGroup/iconCreate.png"></Image>

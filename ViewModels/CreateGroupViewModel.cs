@@ -6,36 +6,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using WordAndSQL_Core.Infastructure.Commands;
+using WordAndSQL_Core.Views.Windows;
 
 namespace WordAndSQL_Core.ViewModels
 {
     class CreateGroupViewModel
     {
-        #region Команды
 
-        #region Команда закрыть окно
-
-        public ICommand CloseApplicationCommand { get; }
-
-        private bool CanCloseApplicationCommandExecute(object p) => true;
-
-        private void OnCloseApplicationCommandExecuted(object p)
-        {
-            Application.Current.Shutdown();
-        }
-
-        #endregion
-
-        #endregion
-
-        public CreateGroupViewModel()
-        {
-            #region Команды
-
-            CloseApplicationCommand = new LambdaCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
-
-            #endregion
-
-        }
     }
 }

@@ -5,8 +5,125 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WordAndSQL_Core.Views.Windows"
         mc:Ignorable="d"
-        Title="UpdateGroup" MinHeight="650" MinWidth="750" Height="750" Width="800" FontFamily="Times New Roman" WindowStartupLocation="CenterScreen">
-    <Grid>
-        
+        Title="Параметры гурппы" 
+        MinHeight="650" MinWidth="750" Height="750" Width="800" 
+        FontFamily="Times New Roman" FontSize="16" 
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="#ccebcc">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Grid.Row="0" Grid.Column="0">
+                <TextBlock VerticalAlignment="Center">Номер:</TextBlock>
+                <TextBox Height="25" Width="200"
+                         Margin="15,0,100,0"
+                         VerticalContentAlignment="Center" ></TextBox>
+                <TextBlock VerticalAlignment="Center">Название:</TextBlock>
+            </DockPanel>
+
+            <DockPanel Grid.Row="1" Grid.Column="0">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right">Период обучения : с</TextBlock>
+                <DatePicker Height="25" Width="119" 
+                        VerticalContentAlignment="Center" 
+                        VerticalAlignment="Center"
+                        BorderThickness="0,0,0,2"  
+                        Margin="10,0,10,0"/>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right">по</TextBlock>
+                <DatePicker Height="25" Width="119" 
+                        VerticalContentAlignment="Center"
+                        VerticalAlignment="Center"
+                        BorderThickness="0,0,0,2"  
+                        Margin="10,0,10,0"/>
+            </DockPanel>
+
+            <DockPanel Grid.Row="0" Grid.Column="1" 
+                     Grid.RowSpan="2">
+                <TextBox Margin="0,14,0,15" 
+                         AcceptsReturn = "True">
+                </TextBox>
+            </DockPanel>
+
+            <Button Style="{StaticResource SButton}"
+                    Grid.Row="0" Grid.Column="2"
+                    Grid.RowSpan="2"
+                    Height="30" Width="40">
+                <StackPanel Orientation="Horizontal">
+                    <ContentControl Margin="2">
+                        <Image Source="/img/WindowUpdate/iconUpdate.png"></Image>
+                    </ContentControl>
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource SButton}"
+                    Grid.Row="2" Grid.Column="1"
+                    Margin="10">
+                <StackPanel Orientation="Horizontal">
+                    <ContentControl Margin="2">
+                        <Image Source="/img/WindowUpdate/iconImport.png"></Image>
+                    </ContentControl>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                               Margin="2">Иморт слушателей из Word</TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <TabControl Grid.Row="1" Background="#dff0df">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource STextBlock}" Margin="3">Слушатели</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <DockPanel Grid.Row="0" Grid.Column="0"
+                                   Grid.ColumnSpan="2">
+                            <TextBlock VerticalAlignment="Center"
+                                       Margin="20">Поиск слушателей:</TextBlock>
+                            <TextBox Height="26" Width="550"
+                                     VerticalContentAlignment="Center" ></TextBox>
+                            <Button Style="{StaticResource SButton}"
+                                    Grid.Row="0" Grid.Column="2"
+                                    Grid.RowSpan="2"
+                                    Height="30" Width="40">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Margin="2">
+                                        <Image Source="/img/WindowUpdate/lupa.png"></Image>
+                                    </ContentControl>
+                                </StackPanel>
+                            </Button>
+                        </DockPanel>
+
+                    </Grid>
+
+
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

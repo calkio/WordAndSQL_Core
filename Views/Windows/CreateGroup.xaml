@@ -3,11 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WordAndSQL_Core.Views.Windows"
+        xmlns:local="clr-namespace:WordAndSQL_Core.Views.Windows" 
+        xmlns:vm="clr-namespace:WordAndSQL_Core.ViewModels"
         mc:Ignorable="d"
         Title="Создание гурппы" Height="300" Width="700"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         FontFamily="Times New Roman" FontSize="16">
+    <Window.DataContext>
+        <vm:CreateGroupViewModel/>
+    </Window.DataContext>
     <Grid Background="#dff0df">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -81,8 +85,7 @@
                 IsCancel="True" 
                 HorizontalAlignment="Left" 
                 Margin="30,0,0,0" 
-                Height="40" Width="100"
-                Command="{Binding }">
+                Height="40" Width="100">
             <StackPanel Orientation="Horizontal">
                 <ContentControl Width="25" Height="25" Margin="2">
                     <Image Source="/img/WindowCreate/back.png"></Image>
