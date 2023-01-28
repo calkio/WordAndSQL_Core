@@ -8,9 +8,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="img\MainWindow\tabGroup\groupPeople.png" />
+    <None Remove="img\MainWindow\tabGroup\iconCreate.png" />
+    <None Remove="img\MainWindow\tabGroup\iconDelete.png" />
+    <None Remove="img\MainWindow\tabGroup\iconUpdate.png" />
+    <None Remove="img\MainWindow\tabGroup\lupa.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Models\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="img\MainWindow\tabGroup\groupPeople.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\MainWindow\tabGroup\iconCreate.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\MainWindow\tabGroup\iconDelete.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\MainWindow\tabGroup\iconUpdate.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\MainWindow\tabGroup\lupa.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
