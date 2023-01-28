@@ -12,6 +12,186 @@
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     <Grid Background="#ccebcc">
-        
+        <TabControl Background="#dff0df">
+            <TabItem FontFamily="Times New Roman">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource STextBlock}" Margin="3">Группы</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid x:Name="contentGroupTab">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                            <RowDefinition Height="70"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <Image Source="/img/MainWindow/tabGroup/groupPeople.png" Height="70" HorizontalAlignment="Left" Margin="10,15,10,10"></Image>
+                            <TextBlock TextWrapping="Wrap" 
+                                       Width="290" 
+                                       FontSize="20" 
+                                       VerticalAlignment="Center" 
+                                       Margin="5">Добавление и редактирование информации о группах слушателей</TextBlock>
+                            <TextBlock TextWrapping="Wrap" 
+                                       Width="170" 
+                                       FontSize="14" 
+                                       VerticalAlignment="Center" 
+                                       Margin="5">Поиск по названию группы:</TextBlock>
+                        </StackPanel>
+                        <TextBox Style="{StaticResource STextBox}" 
+                                 MinWidth="150" 
+                                 Grid.Row="0" 
+                                 Margin="575,0,70,0" 
+                                 VerticalAlignment="Center"></TextBox>
+                        <Button Style="{StaticResource SButton}" 
+                                Width="22" Height="22" 
+                                Background="White" 
+                                Margin="10,0,40,0" 
+                                VerticalAlignment="Center" HorizontalAlignment="Right">
+                            
+                            <Image Source="/img/MainWindow/tabGroup/lupa.png"></Image>
+                        </Button>
+
+                        <StackPanel Grid.Row="1">
+                            
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="25,0,0,0">
+                            <Button Style="{StaticResource SButton}"
+                                    Width="150" Height="40"
+                                    VerticalAlignment="Center"
+                                    Margin="20 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="25" Height="25" Margin="2">
+                                        <Image Source="/img/MainWindow/tabGroup/iconCreate.png"></Image>
+                                    </ContentControl>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                               Margin="2" FontSize="16">Добавить</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource SButton}" 
+                                    Width="150" Height="40" 
+                                    VerticalAlignment="Center" 
+                                    Margin="20 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="25" Height="25" Margin="2">
+                                        <Image Source="/img/MainWindow/tabGroup/iconUpdate.png"></Image>
+                                    </ContentControl>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                               Margin="2" 
+                                               FontSize="16">Изменить</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource SButton}" 
+                                    Width="150" Height="40" 
+                                    VerticalAlignment="Center" 
+                                    Margin="20 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="25" Height="25" Margin="2">
+                                        <Image Source="/img/MainWindow/tabGroup/iconDelete.png"></Image>
+                                    </ContentControl>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                               Margin="2" 
+                                               FontSize="16">Удалить</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem FontFamily="Times New Roman">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource STextBlock}" Margin="3">Слушатели</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid x:Name="contentUsersTab">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                            <RowDefinition Height="70"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <Image Source="/imgUsersTab/onePeople.png" Height="70" HorizontalAlignment="Left" Margin="10,15,10,10"></Image>
+                            <TextBlock TextWrapping="Wrap" 
+                                       Width="290" 
+                                       FontSize="20" 
+                                       FontFamily="Times New Roman" 
+                                       VerticalAlignment="Center" 
+                                       Margin="5">Добавление и редактирование информации о слушателях</TextBlock>
+                            <TextBlock TextWrapping="Wrap"
+                                       Width="170" FontSize="14" 
+                                       FontFamily="Times New Roman"
+                                       VerticalAlignment="Center" 
+                                       Margin="5">Поиск по названию группы:</TextBlock>
+                        </StackPanel>
+                        <TextBox Style="{StaticResource STextBox}" 
+                                 Grid.Row="0"
+                                 MinWidth="150" 
+                                 Margin="575,0,70,0" 
+                                 VerticalAlignment="Center"></TextBox>
+                        <Button Style="{StaticResource SButton}" 
+                                Width="22" Height="22" 
+                                Background="White" 
+                                Margin="10,0,40,0"
+                                VerticalAlignment="Center" HorizontalAlignment="Right">
+                            <Image Source="/imgUsersTab/lupa.png"></Image>
+                        </Button>
+
+                        <StackPanel Grid.Row="1">
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2"
+                                    Orientation="Horizontal" 
+                                    Margin="25,0,0,0">
+                            <Button Style="{StaticResource SButton}"
+                                    Width="150" Height="40"
+                                    VerticalAlignment="Center"
+                                    Margin="20 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="25" Height="25" Margin="2">
+                                        <Image Source="/imgGroupsTab/iconCreate.png"></Image>
+                                    </ContentControl>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                               Margin="2" 
+                                               FontSize="16">Добавить</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource SButton}" 
+                                    Width="150" Height="40" 
+                                    VerticalAlignment="Center" 
+                                    Margin="20 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="25" Height="25" Margin="2">
+                                        <Image Source="/imgGroupsTab/iconUpdate.png"></Image>
+                                    </ContentControl>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                               Margin="2"
+                                               FontSize="16">Изменить</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource SButton}"
+                                    Width="150" Height="40" 
+                                    VerticalAlignment="Center" 
+                                    Margin="20 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Width="25" Height="25" Margin="2">
+                                        <Image Source="/imgGroupsTab/iconDelete.png"></Image>
+                                    </ContentControl>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                               Margin="2" 
+                                               FontSize="16">Удалить</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
