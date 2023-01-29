@@ -16,6 +16,7 @@
             <RowDefinition Height="70"></RowDefinition>
         </Grid.RowDefinitions>
 
+        <!--Шапка-->
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -34,7 +35,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <TextBlock Grid.Column="0"
                            VerticalAlignment="Center"
                            Margin="15,0,0,0">Номер:</TextBlock>
@@ -65,7 +66,7 @@
 
             <DockPanel Grid.Row="0" Grid.Column="1" 
                      Grid.RowSpan="2">
-                <TextBox Margin="0,6,0,15" 
+                <TextBox Margin="0,5,0,7" 
                          AcceptsReturn = "True">
                 </TextBox>
             </DockPanel>
@@ -95,6 +96,7 @@
         </Grid>
 
         <TabControl Grid.Row="1" Background="#dff0df">
+            <!--Вкладка Слушатели-->
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -141,7 +143,7 @@
 
                             <TextBlock Grid.Row="0"
                                        VerticalAlignment="Center"
-                                       Margin="15,0,15,0">Слушатели в групе: </TextBlock>
+                                       Margin="15,0,15,0">Слушатели в групе:</TextBlock>
 
                             <TextBox Grid.Row="1"
                                      Margin="15,0,15,15"
@@ -185,17 +187,229 @@
 
                                 <TextBlock Grid.Row="0"
                                            Margin="15,0,15,0"
-                                           VerticalAlignment="Center">Уже состоит в слеующих групах: </TextBlock>
+                                           VerticalAlignment="Center">Уже состоит в слеующих групах:</TextBlock>
 
                                 <TextBox Grid.Row="1"
                                          Margin="15,0,15,15">
-                                    
+
                                 </TextBox>
                             </Grid>
                         </Grid>
                     </Grid>
 
 
+                </TabItem.Content>
+            </TabItem>
+            <!--Вкладка Протоколы-->
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource STextBlock}" Margin="3">Протоколы</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="270"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <!--Кнопки-->
+                        <StackPanel Grid.Column="0">
+                            <Button Style="{StaticResource SButton}"
+                                    Height="70"
+                                    Margin="15,15,15,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Margin="2">
+                                        <Image Source="/img/WindowUpdate/word.png"
+                                               Margin="0,18,0,18"></Image>
+                                    </ContentControl>
+                                    <TextBlock VerticalAlignment="Center" 
+                                               Margin="2"
+                                               FontSize="18"
+                                               TextWrapping="Wrap">Удостоверение №1</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource SButton}"
+                                    Height="70"
+                                    Margin="15,10,15,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Margin="2">
+                                        <Image Source="/img/WindowUpdate/word.png"
+                                               Margin="0,18,0,18"></Image>
+                                    </ContentControl>
+                                    <TextBlock VerticalAlignment="Center" 
+                                               Margin="2"
+                                               FontSize="18"
+                                               TextWrapping="Wrap">Протокол ДИ</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource SButton}"
+                                    Height="70"
+                                    Margin="15,10,15,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Margin="2">
+                                        <Image Source="/img/WindowUpdate/word.png"
+                                               Margin="0,18,0,18"></Image>
+                                    </ContentControl>
+                                    <TextBlock VerticalAlignment="Center" 
+                                               Margin="2"
+                                               FontSize="18"
+                                               TextWrapping="Wrap">Ведомость выдачи</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource SButton}"
+                                    Height="70"
+                                    Margin="15,10,15,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Margin="2">
+                                        <Image Source="/img/WindowUpdate/word.png"
+                                               Margin="0,18,0,18"></Image>
+                                    </ContentControl>
+                                    <TextBlock VerticalAlignment="Center" 
+                                               Margin="2"
+                                               FontSize="18"
+                                               TextWrapping="Wrap">Приказ о зачислении</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource SButton}"
+                                    Height="70"
+                                    Margin="15,10,15,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <ContentControl Margin="2">
+                                        <Image Source="/img/WindowUpdate/word.png"
+                                               Margin="0,18,0,18"></Image>
+                                    </ContentControl>
+                                    <TextBlock VerticalAlignment="Center" 
+                                               Margin="2"
+                                               FontSize="18"
+                                               TextWrapping="Wrap">Приказ об отчеслении</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+                        <Grid Grid.Column="1" 
+                              Height="390"
+                              VerticalAlignment="Top"
+                              Margin="15,25,15,15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.7*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--textBox-->
+                            <DockPanel Grid.Row="0" Grid.Column="0">
+                                <TextBlock VerticalAlignment="Top" 
+                                           Width="160"
+                                           FontSize="20">Номер протокола:</TextBlock>
+                                <TextBox Height="25" Width="130"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock VerticalAlignment="Top" 
+                                           FontSize="20">Дата:</TextBlock>
+                                <DatePicker Height="25" Width="125"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></DatePicker>
+                            </DockPanel>
+
+                            <DockPanel Grid.Row="1" Grid.Column="0">
+                                <TextBlock 
+                                           TextWrapping="Wrap" 
+                                           Width="160"
+                                           FontSize="20">Номер первого удостоверения:</TextBlock>
+                                <TextBox Height="25" Width="130"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1" Grid.Column="1">
+                                <TextBlock VerticalAlignment="Top" 
+                                           FontSize="20">Дата:</TextBlock>
+                                <DatePicker Height="25" Width="125"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></DatePicker>
+                            </DockPanel>
+
+                            <DockPanel Grid.Row="2" Grid.Column="0">
+                                <TextBlock 
+                                           TextWrapping="Wrap" 
+                                           Width="160"
+                                           FontSize="20">Номер приказа выдачи:</TextBlock>
+                                <TextBox Height="25" Width="130"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="2" Grid.Column="1">
+                                <TextBlock VerticalAlignment="Top" 
+                                           FontSize="20">Дата:</TextBlock>
+                                <DatePicker Height="25" Width="125"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></DatePicker>
+                            </DockPanel>
+
+                            <DockPanel Grid.Row="3" Grid.Column="0">
+                                <TextBlock 
+                                           TextWrapping="Wrap" 
+                                           Width="160"
+                                           FontSize="20">Номер приказа о:</TextBlock>
+                                <TextBox Height="25" Width="130"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="3" Grid.Column="1">
+                                <TextBlock VerticalAlignment="Top" 
+                                           FontSize="20">Дата:</TextBlock>
+                                <DatePicker Height="25" Width="125"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></DatePicker>
+                            </DockPanel>
+
+                            <DockPanel Grid.Row="4" Grid.Column="0">
+                                <TextBlock 
+                                           TextWrapping="Wrap" 
+                                           Width="160"
+                                           FontSize="20">Номер приказа об отчислении:</TextBlock>
+                                <TextBox Height="25" Width="130"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="4" Grid.Column="1">
+                                <TextBlock VerticalAlignment="Top" 
+                                           FontSize="20">Дата:</TextBlock>
+                                <DatePicker Height="25" Width="125"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></DatePicker>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
                 </TabItem.Content>
             </TabItem>
         </TabControl>
