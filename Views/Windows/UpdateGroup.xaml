@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WordAndSQL_Core.Views.Windows"
         mc:Ignorable="d"
         Title="Параметры гурппы" 
-        MinHeight="650" MinWidth="750" Height="750" Width="800" 
+        MinHeight="750" MinWidth="800" Height="750" Width="800"
         FontFamily="Times New Roman" FontSize="16" 
         WindowStartupLocation="CenterScreen">
     <Grid Background="#ccebcc">
@@ -123,7 +123,7 @@
                             <Button Style="{StaticResource SButton}"
                                     Grid.Row="0" Grid.Column="2"
                                     Grid.RowSpan="2"
-                                    Height="30" Width="40"
+                                    Height="30" Width="35"
                                     HorizontalAlignment="Left"
                                     Margin="10">
                                 <StackPanel Orientation="Horizontal">
@@ -300,7 +300,7 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.7*"/>
+                                <ColumnDefinition Width="330"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
@@ -409,6 +409,214 @@
                                            ></DatePicker>
                             </DockPanel>
                         </Grid>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <!--Вкладка Настройки группы-->
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Style="{StaticResource STextBlock}" Margin="3">Настройки группы</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <Grid Margin="15,50,15,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.8*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!--Текстбоксы с датами-->
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="320"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <DockPanel Grid.Row="0" Grid.Column="0">
+                                <TextBlock VerticalAlignment="Top" 
+                                           Width="160" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="20">Номер приказа о зачислении:</TextBlock>
+                                <TextBox Height="25" Width="130"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="0" Grid.Column="1">
+                                <TextBlock VerticalAlignment="Top" 
+                                           FontSize="20">Дата:</TextBlock>
+                                <DatePicker Height="25" Width="125"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></DatePicker>
+                            </DockPanel>
+                            
+                            <DockPanel Grid.Row="1" Grid.Column="0">
+                                <TextBlock VerticalAlignment="Top" 
+                                           Width="160"
+                                           TextWrapping="Wrap" 
+                                           FontSize="20">Номер приказа об отчислении:</TextBlock>
+                                <TextBox Height="25" Width="130"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1" Grid.Column="1">
+                                <TextBlock VerticalAlignment="Top" 
+                                           FontSize="20">Дата:</TextBlock>
+                                <DatePicker Height="25" Width="125"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></DatePicker>
+                            </DockPanel>
+                        </Grid>
+                        
+                        <!--Председатель и его должность-->
+                        <Grid Grid.Row="1" Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <DockPanel Grid.Row="0">
+                                <TextBlock VerticalAlignment="Top" 
+                                           Width="160" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="20">Председатель:</TextBlock>
+                                <TextBox Height="25" Width="340"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1">
+                                <TextBlock VerticalAlignment="Top" 
+                                           Width="160" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="20">Должность:</TextBlock>
+                                <TextBox Height="25" Width="340"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="2">
+                                <TextBox Height="25" Width="340"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="167,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                        </Grid>
+
+                        <!--Член комиссии 1 и его должность-->
+                        <Grid Grid.Row="2" Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <DockPanel Grid.Row="0">
+                                <TextBlock VerticalAlignment="Top" 
+                                           Width="160" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="20">Член комиссии 1:</TextBlock>
+                                <TextBox Height="25" Width="340"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1">
+                                <TextBlock VerticalAlignment="Top" 
+                                           Width="160" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="20">Должность:</TextBlock>
+                                <TextBox Height="25" Width="340"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="2">
+                                <TextBox Height="25" Width="340"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="167,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                        </Grid>
+
+                        <!--Член комиссии 2 и его должность-->
+                        <Grid Grid.Row="3" Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <DockPanel Grid.Row="0">
+                                <TextBlock VerticalAlignment="Top" 
+                                           Width="160" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="20">Член комиссии 2:</TextBlock>
+                                <TextBox Height="25" Width="340"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="1">
+                                <TextBlock VerticalAlignment="Top" 
+                                           Width="160" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="20">Должность:</TextBlock>
+                                <TextBox Height="25" Width="340"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="7,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                            <DockPanel Grid.Row="2">
+                                <TextBox Height="25" Width="340"
+                                         VerticalAlignment="Top" HorizontalAlignment="Left"
+                                         Margin="167,0,0,0"
+                                         VerticalContentAlignment="Center"
+                                           ></TextBox>
+                            </DockPanel>
+                        </Grid>
+                        
+                        <!--Кнопка сохранения-->
+                        <Button Style="{StaticResource SButton}"
+                                Grid.Row="3" Grid.Column="1"
+                                Height="50" Width="240">
+                            <StackPanel Orientation="Horizontal">
+                                <ContentControl Margin="2">
+                                    <Image Source="/img/WindowUpdate/save.png"
+                                           Margin="10"></Image>
+                                </ContentControl>
+                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                               Margin="2">Сохранить</TextBlock>
+                            </StackPanel>
+                        </Button>
+                        
                     </Grid>
                 </TabItem.Content>
             </TabItem>

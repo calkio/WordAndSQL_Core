@@ -19,6 +19,7 @@
     <None Remove="img\WindowUpdate\iconImport.png" />
     <None Remove="img\WindowUpdate\iconUpdate.png" />
     <None Remove="img\WindowUpdate\lupa.png" />
+    <None Remove="img\WindowUpdate\save.png" />
     <None Remove="img\WindowUpdate\word.png" />
   </ItemGroup>
 
@@ -60,6 +61,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\WindowUpdate\lupa.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\WindowUpdate\save.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\WindowUpdate\word.png">
