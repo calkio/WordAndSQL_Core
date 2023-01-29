@@ -33,7 +33,7 @@
                             <RowDefinition Height="70"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <DockPanel Grid.Row="0" Grid.ColumnSpan="2">
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2">
                             <Image Source="/img/MainWindow/tabGroup/groupPeople.png" Height="70" HorizontalAlignment="Left" Margin="10,15,10,10"></Image>
                             <TextBlock TextWrapping="Wrap" 
                                        Width="290" 
@@ -59,7 +59,7 @@
                                         </ContentControl>
                                     </StackPanel>
                             </Button>
-                        </DockPanel>
+                        </StackPanel>
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
 
                         </StackPanel>
