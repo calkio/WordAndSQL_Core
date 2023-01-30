@@ -18,11 +18,11 @@ namespace WordAndSQL_Core.ViewModels
 
         #region Команда открытия окна добавления
 
-        public ICommand OpenApplicationCommand { get; }
+        public ICommand CreateApplicationCommand { get; }
 
-        private bool CanOpenApplicationCommandExecute(object p) => true;
+        private bool CanCreateApplicationCommandExecute(object p) => true;
 
-        private void OnOpenApplicationCommandExecuted(object p)
+        private void OnCreateApplicationCommandExecuted(object p)
         {
             CreateGroup createGroup = new CreateGroup();
             createGroup.Owner = Application.Current.MainWindow;
@@ -54,7 +54,7 @@ namespace WordAndSQL_Core.ViewModels
         {
             #region Команды
 
-            OpenApplicationCommand = new LambdaCommand(OnOpenApplicationCommandExecuted, CanOpenApplicationCommandExecute);
+            CreateApplicationCommand = new LambdaCommand(OnCreateApplicationCommandExecuted, CanCreateApplicationCommandExecute);
             UpdateApplicationCommand = new LambdaCommand(OnUpdateApplicationCommandExecuted, CanUpdateApplicationCommandExecute);
 
             #endregion

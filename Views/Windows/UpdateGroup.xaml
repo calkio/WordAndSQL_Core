@@ -3,12 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WordAndSQL_Core.Views.Windows"
+        xmlns:local="clr-namespace:WordAndSQL_Core.Views.Windows" xmlns:vm="clr-namespace:WordAndSQL_Core.ViewModels"
         mc:Ignorable="d"
         Title="Параметры гурппы" 
         MinHeight="750" MinWidth="800" Height="750" Width="800"
         FontFamily="Times New Roman" FontSize="16" 
         WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:UpdateGroupViewModel/>
+    </Window.DataContext>
     <Grid Background="#ccebcc">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
@@ -84,7 +87,8 @@
 
             <Button Style="{StaticResource SButton}"
                     Grid.Row="2" Grid.Column="1"
-                    Height="25" Width="250">
+                    Height="25" Width="250"
+                    Command="{Binding OpenImportApplicationCommand}">
                 <StackPanel Orientation="Horizontal">
                     <ContentControl Margin="2">
                         <Image Source="/img/WindowUpdate/iconImport.png"></Image>
