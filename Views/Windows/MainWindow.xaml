@@ -23,10 +23,6 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="121*"/>
-                            <ColumnDefinition Width="873*"/>
-                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100"></RowDefinition>
                             <RowDefinition ></RowDefinition>
@@ -47,7 +43,8 @@
                             <TextBox Style="{StaticResource STextBox}" 
                                     MinWidth="150"
                                     Height="25" Width="350"
-                                    VerticalAlignment="Center"/>
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"/>
                             <Button Style="{StaticResource SButton}" 
                                     Width="22" Height="22" 
                                     Margin="7"
@@ -61,7 +58,10 @@
                             </Button>
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
-
+                            <Button Height="200"
+                                    Command="{Binding UpdateApplicationCommand}">
+                                
+                            </Button>
                         </StackPanel>
 
                         <StackPanel Grid.Row="2" 
@@ -126,7 +126,7 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="3">
-                            <Image Source="/img/MainWindow/tabGroup/groupPeople.png" Height="70" HorizontalAlignment="Left" Margin="10,15,10,10"></Image>
+                            <Image Source="/img/MainWindow/tabGroup/onePeople.png" Height="70" HorizontalAlignment="Left" Margin="10,15,10,10"></Image>
                             <TextBlock TextWrapping="Wrap" 
                                        Width="290" 
                                        FontSize="20" 
@@ -140,7 +140,8 @@
                             <TextBox Style="{StaticResource STextBox}" 
                                     MinWidth="150"
                                     Height="25" Width="350"
-                                    VerticalAlignment="Center"/>
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"/>
                             <Button Style="{StaticResource SButton}" 
                                     Width="22" Height="22" 
                                     Margin="7"

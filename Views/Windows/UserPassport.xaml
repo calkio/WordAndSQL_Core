@@ -1,0 +1,205 @@
+﻿<Window x:Class="WordAndSQL_Core.Views.Windows.UserPassport"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WordAndSQL_Core.Views.Windows"
+        mc:Ignorable="d"
+        Title="О слушателе" 
+        MinHeight="800" MinWidth="1200"
+        Height="800" Width="1200"
+        FontFamily="Times New Roman" FontSize="16"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="#ccebcc">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="240"/>
+            <RowDefinition/>
+            <RowDefinition Height="230"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        
+        <!--Шапка-->
+        <Grid Grid.Row="0"
+              Margin="15,15,15,3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Личная информация-->
+            <Border Grid.Row="0" Grid.Column="0"
+                    Grid.ColumnSpan="4"
+                    BorderBrush="Gray" BorderThickness="0,0,0,1">
+                <TextBlock VerticalAlignment="Center"
+                           FontSize="20">Личная информация</TextBlock>
+            </Border>
+
+            <!--Все поля-->
+            <StackPanel Grid.Row="1" Grid.Column="0"
+                        Margin="0,7,0,0">
+                <TextBlock>Фамилия</TextBlock>
+                <TextBox Height="25" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+                <TextBlock>Дата рождения</TextBlock>
+                <TextBox Height="25" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+                <TextBlock>СНИЛС</TextBlock>
+                <TextBox Height="25" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1"
+                        Margin="0,7,0,0">
+                <TextBlock>Имя</TextBlock>
+                <TextBox Height="25" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+                <TextBlock>Телефон</TextBlock>
+                <TextBox Height="25" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+                <TextBlock>Гражданство</TextBlock>
+                <TextBox Height="25" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="2"
+                        Margin="0,7,0,0">
+                <TextBlock>Отчество</TextBlock>
+                <TextBox Height="25" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+                <TextBlock>Логин</TextBlock>
+                <TextBox Height="25" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+                <TextBlock>Пол</TextBlock>
+                <TextBox Height="25" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="3"
+                        Margin="0,7,0,0">
+                <TextBlock>Номер</TextBlock>
+                <TextBox Height="25" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,0,5"
+                         VerticalContentAlignment="Center"></TextBox>
+            </StackPanel>
+
+            <!--Картинка + кнопка карточки-->
+            <StackPanel Grid.Row="1" Grid.Column="4">
+                <ContentControl Width="150" Height="120" >
+                    <Image Source="/img/WindowUserPassport/onePeople.png"></Image>
+                </ContentControl>
+
+                <Button Style="{StaticResource SButton}"
+                        Width="150" Height="40" 
+                        VerticalAlignment="Center" 
+                        Margin="20 0">
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Width="25" Height="25" Margin="2">
+                            <Image Source="/img/WindowUserPassport/passport.png"></Image>
+                        </ContentControl>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Margin="2" 
+                                   FontSize="16">Карточка</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        <!--Таблица-->
+        <Grid Grid.Row="1"
+              Margin="15,3,15,3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" 
+                    BorderBrush="Gray" BorderThickness="0,0,0,1">
+                <TextBlock VerticalAlignment="Center"
+                           FontSize="20">Информация о группах</TextBlock>
+            </Border>
+
+            <DataGrid Grid.Row="1"
+                      Margin="0,5,0,0">
+
+            </DataGrid>
+        </Grid>
+        
+        <!--Заметки-->
+        <Border Grid.Row="2"
+                BorderBrush="LightGray" BorderThickness="1"
+                Margin="15,3,15,3" Padding="5"
+                CornerRadius="2">
+            <Grid Width="900"
+                 HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="450"/>
+                    <ColumnDefinition Width="450"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0"
+                        Margin="0,7,0,0">
+                    <TextBlock>Место работы:</TextBlock>
+                    <TextBox Height="70" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+                    <TextBlock>Должность:</TextBlock>
+                    <TextBox Height="70" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                        Margin="0,7,0,0">
+                    <TextBlock>Образование:</TextBlock>
+                    <TextBox Height="70" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+                    <TextBlock>Примечания:</TextBlock>
+                    <TextBox Height="70" 
+                         Style="{StaticResource STextBox}"
+                         Margin="0,5,15,5"
+                         VerticalContentAlignment="Center"></TextBox>
+                </StackPanel>
+            </Grid>
+        </Border>
+        
+        <!--Кнопка сохранить-->
+        <Button Style="{StaticResource SButton}"
+                Grid.Row="3"
+                Margin="15 10">
+            <StackPanel Orientation="Horizontal">
+                <ContentControl Width="25" Height="25" Margin="2">
+                    <Image Source="/img/WindowUserPassport/save.png"></Image>
+                </ContentControl>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Margin="2" 
+                           FontSize="20">Сохранить</TextBlock>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

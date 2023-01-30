@@ -48,6 +48,22 @@ namespace WordAndSQL_Core.ViewModels
 
         #endregion
 
+        #region Команда открытия окна карточки
+
+        public ICommand UserPassportApplicationCommand { get; }
+
+        private bool CanUserPassportApplicationCommandExecute(object p) => true;
+
+        private void OnUserPassportApplicationCommandExecuted(object p)
+        {
+            UserPassport userPassport = new UserPassport();
+            userPassport.Owner = Application.Current.MainWindow;
+            userPassport.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            userPassport.ShowDialog();
+        }
+
+        #endregion
+
         #endregion
 
         public MainWindowViewModel()
@@ -56,6 +72,7 @@ namespace WordAndSQL_Core.ViewModels
 
             CreateApplicationCommand = new LambdaCommand(OnCreateApplicationCommandExecuted, CanCreateApplicationCommandExecute);
             UpdateApplicationCommand = new LambdaCommand(OnUpdateApplicationCommandExecuted, CanUpdateApplicationCommandExecute);
+            UpdateApplicationCommand = new LambdaCommand(OnUserPassportApplicationCommandExecuted, CanUserPassportApplicationCommandExecute);
 
             #endregion
 
