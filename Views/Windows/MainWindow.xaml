@@ -18,7 +18,9 @@
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Style="{StaticResource STextBlock}" Margin="3">Группы</TextBlock>
+                        <TextBlock Style="{StaticResource STextBlock}" 
+                                   Margin="3"
+                                   FontSize="16">Группы</TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <TabItem.Content>
@@ -115,7 +117,9 @@
             <TabItem FontFamily="Times New Roman">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Style="{StaticResource STextBlock}" Margin="3">Слушатели</TextBlock>
+                        <TextBlock Style="{StaticResource STextBlock}" 
+                                   Margin="3"
+                                   FontSize="16">Слушатели</TextBlock>
                     </StackPanel>
                 </TabItem.Header>
                 <TabItem.Content>
