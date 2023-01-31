@@ -13,6 +13,11 @@ namespace WordAndSQL_Core.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
+        #region Текст для окна удаления
+
+        static public string textDelete { get; set; }
+
+        #endregion
 
         #region Команды
 
@@ -64,6 +69,40 @@ namespace WordAndSQL_Core.ViewModels
 
         #endregion
 
+        #region Команда открытия окна удаления группы
+
+        public ICommand DeleteGroupApplicationCommand { get; }
+
+        private bool CanDeleteGroupApplicationCommandExecute(object p) => true;
+
+        private void OnDeleteGroupApplicationCommandExecuted(object p)
+        {
+            textDelete = "Вы действительно хотите удалить выбранную группу?";
+            Delete delete = new Delete();
+            delete.Owner = Application.Current.MainWindow;
+            delete.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            delete.ShowDialog();
+        }
+
+        #endregion
+
+        #region Команда открытия окна удаления пользователя
+
+        public ICommand DeleteUserApplicationCommand { get; }
+
+        private bool CanDeleteUserApplicationCommandExecute(object p) => true;
+
+        private void OnDeleteUserApplicationCommandExecuted(object p)
+        {
+            textDelete = "Вы действительно хотите удалить выбранного человека?";
+            Delete delete = new Delete();
+            delete.Owner = Application.Current.MainWindow;
+            delete.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            delete.ShowDialog();
+        }
+
+        #endregion
+
         #endregion
 
         public MainWindowViewModel()
@@ -72,7 +111,9 @@ namespace WordAndSQL_Core.ViewModels
 
             CreateApplicationCommand = new LambdaCommand(OnCreateApplicationCommandExecuted, CanCreateApplicationCommandExecute);
             UpdateApplicationCommand = new LambdaCommand(OnUpdateApplicationCommandExecuted, CanUpdateApplicationCommandExecute);
-            UpdateApplicationCommand = new LambdaCommand(OnUserPassportApplicationCommandExecuted, CanUserPassportApplicationCommandExecute);
+            UserPassportApplicationCommand = new LambdaCommand(OnUserPassportApplicationCommandExecuted, CanUserPassportApplicationCommandExecute);
+            DeleteGroupApplicationCommand = new LambdaCommand(OnDeleteGroupApplicationCommandExecuted, CanDeleteGroupApplicationCommandExecute);
+            DeleteUserApplicationCommand = new LambdaCommand(OnDeleteUserApplicationCommandExecuted, CanDeleteUserApplicationCommandExecute);
 
             #endregion
 

@@ -59,7 +59,7 @@
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
                             <Button Height="200"
-                                    Command="{Binding UpdateApplicationCommand}">
+                                    Command="{Binding UserPassportApplicationCommand}">
                                 
                             </Button>
                         </StackPanel>
@@ -97,7 +97,8 @@
                             <Button Style="{StaticResource SButton}" 
                                     Width="150" Height="40" 
                                     VerticalAlignment="Center" 
-                                    Margin="20 0">
+                                    Margin="20 0"
+                                    Command="{Binding DeleteGroupApplicationCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <ContentControl Width="25" Height="25" Margin="2">
                                         <Image Source="/img/MainWindow/tabGroup/iconDelete.png"></Image>
@@ -161,7 +162,8 @@
                             <Button Style="{StaticResource SButton}" 
                                     Width="150" Height="40" 
                                     VerticalAlignment="Center" 
-                                    Margin="50,0,20,0">
+                                    Margin="50,0,20,0"
+                                    Command="{Binding UserPassportApplicationCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <ContentControl Width="25" Height="25" Margin="2">
                                         <Image Source="/img/MainWindow/tabGroup/iconUpdate.png"></Image>
@@ -175,7 +177,7 @@
                                     Width="150" Height="40" 
                                     VerticalAlignment="Center" 
                                     Margin="20 0"
-                                    Command="{Binding CloseApplicationCommand}">
+                                    Command="{Binding DeleteUserApplicationCommand}">
                                 <StackPanel Orientation="Horizontal">
                                     <ContentControl Width="25" Height="25" Margin="2">
                                         <Image Source="/img/MainWindow/tabGroup/iconDelete.png"></Image>

@@ -12,6 +12,6 @@ namespace WordAndSQL_Core.ViewModels
 {
     class CreateGroupViewModel
     {
-
+        
     }
 }

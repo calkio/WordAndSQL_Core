@@ -16,6 +16,7 @@
     <None Remove="img\MainWindow\tabGroup\onePeople.png" />
     <None Remove="img\WindowCreate\back.png" />
     <None Remove="img\WindowCreate\save.png" />
+    <None Remove="img\WindowDelete\iconDelete.png" />
     <None Remove="img\WindowUpdate\iconDelete.png" />
     <None Remove="img\WindowUpdate\iconImport.png" />
     <None Remove="img\WindowUpdate\iconUpdate.png" />
@@ -56,6 +57,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\WindowCreate\save.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\WindowDelete\iconDelete.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\WindowUpdate\iconDelete.png">
