@@ -8,8 +8,8 @@ namespace WordAndSQL_Core.Entity
 {
     class Users
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int id { get; set; }
+        public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string Surname { get; set; }
         public string Numder { get; set; }

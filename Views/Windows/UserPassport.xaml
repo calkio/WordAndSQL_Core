@@ -45,17 +45,20 @@
             <StackPanel Grid.Row="1" Grid.Column="0"
                         Margin="0,7,0,0">
                 <TextBlock>Фамилия</TextBlock>
-                <TextBox Height="25" 
+                <TextBox x:Name="SecondNameTB"
+                         Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
                          VerticalContentAlignment="Center"></TextBox>
                 <TextBlock>Дата рождения</TextBlock>
-                <TextBox Height="25" 
+                <TextBox x:Name="BirthDateTB"
+                         Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
                          VerticalContentAlignment="Center"></TextBox>
                 <TextBlock>СНИЛС</TextBlock>
-                <TextBox Height="25" 
+                <TextBox x:Name="SnilsTB"
+                         Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
                          VerticalContentAlignment="Center"></TextBox>
@@ -63,17 +66,20 @@
             <StackPanel Grid.Row="1" Grid.Column="1"
                         Margin="0,7,0,0">
                 <TextBlock>Имя</TextBlock>
-                <TextBox Height="25" 
+                <TextBox x:Name="FirstNameTB"
+                         Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
                          VerticalContentAlignment="Center"></TextBox>
                 <TextBlock>Телефон</TextBlock>
-                <TextBox Height="25" 
+                <TextBox x:Name="PhoneTB"
+                         Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
                          VerticalContentAlignment="Center"></TextBox>
                 <TextBlock>Гражданство</TextBlock>
-                <TextBox Height="25" 
+                <TextBox x:Name="CitizenshipTB"
+                         Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
                          VerticalContentAlignment="Center"></TextBox>
@@ -81,17 +87,20 @@
             <StackPanel Grid.Row="1" Grid.Column="2"
                         Margin="0,7,0,0">
                 <TextBlock>Отчество</TextBlock>
-                <TextBox Height="25" 
+                <TextBox x:Name="SurnameTB"
+                         Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
                          VerticalContentAlignment="Center"></TextBox>
                 <TextBlock>Логин</TextBlock>
-                <TextBox Height="25" 
+                <TextBox x:Name="LoginTB"
+                         Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
                          VerticalContentAlignment="Center"></TextBox>
                 <TextBlock>Пол</TextBlock>
-                <TextBox Height="25" 
+                <TextBox x:Name="GenderTB"
+                         Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
                          VerticalContentAlignment="Center"></TextBox>
@@ -99,10 +108,16 @@
             <StackPanel Grid.Row="1" Grid.Column="3"
                         Margin="0,7,0,0">
                 <TextBlock>Номер</TextBlock>
-                <TextBox Height="25" 
+                <TextBox x:Name="NumberTB"
+                         Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,0,5"
                          VerticalContentAlignment="Center"></TextBox>
+                <Button Style="{StaticResource SButton}"
+                        Height="40"
+                        Margin="15" Click="Button_Click">
+                    Сохранить
+                </Button>
             </StackPanel>
 
             <!--Картинка + кнопка карточки-->
@@ -143,8 +158,17 @@
 
             <DataGrid x:Name="TableUser"
                       Grid.Row="1"
-                      Margin="0,5,0,0" Loaded="TableUser_Loaded">
-
+                      Margin="0,5,0,0" Loaded="TableUser_Loaded"
+                      IsReadOnly="True" 
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Номер" Width="100" Binding="{Binding Path=Numder}"/>
+                    <DataGridTextColumn Header="Название группы" Width="*" Binding="{Binding Path=NameGroup}"/>
+                    <DataGridTextColumn Header="Вид" Width="110" Binding="{Binding Path=vid}"/>
+                    <DataGridTextColumn Header="Направление" Width="110" Binding="{Binding Path=Direction}"/>
+                    <DataGridTextColumn Header="Начало" Width="110" Binding="{Binding Path=StartDate}"/>
+                    <DataGridTextColumn Header="Конец" Width="110" Binding="{Binding Path=EndDate}"/>
+                </DataGrid.Columns>
             </DataGrid>
         </Grid>
         
@@ -163,28 +187,32 @@
                 <StackPanel Grid.Column="0"
                         Margin="0,7,0,0">
                     <TextBlock>Место работы:</TextBlock>
-                    <TextBox Height="70" 
-                         Style="{StaticResource STextBox}"
-                         Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="PlaceWorkTB"
+                             Height="70" 
+                             Style="{StaticResource STextBox}"
+                             Margin="0,5,15,5"
+                             AcceptsReturn = "True"></TextBox>
                     <TextBlock>Должность:</TextBlock>
-                    <TextBox Height="70" 
-                         Style="{StaticResource STextBox}"
-                         Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="PostTB"
+                             Height="70" 
+                             Style="{StaticResource STextBox}"
+                             Margin="0,5,15,5"
+                             AcceptsReturn = "True"></TextBox>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
                         Margin="0,7,0,0">
                     <TextBlock>Образование:</TextBlock>
-                    <TextBox Height="70" 
-                         Style="{StaticResource STextBox}"
-                         Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="EducationTB"
+                             Height="70" 
+                             Style="{StaticResource STextBox}"
+                             Margin="0,5,15,5"
+                             AcceptsReturn = "True"></TextBox>
                     <TextBlock>Примечания:</TextBlock>
-                    <TextBox Height="70" 
-                         Style="{StaticResource STextBox}"
-                         Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="CommentTB"
+                             Height="70" 
+                             Style="{StaticResource STextBox}"
+                             Margin="0,5,15,5"
+                             AcceptsReturn = "True"></TextBox>
                 </StackPanel>
             </Grid>
         </Border>
@@ -192,7 +220,7 @@
         <!--Кнопка сохранить-->
         <Button Style="{StaticResource SButton}"
                 Grid.Row="3"
-                Margin="15 10">
+                Margin="15 10" Click="Button_Click_1">
             <StackPanel Orientation="Horizontal">
                 <ContentControl Width="25" Height="25" Margin="2">
                     <Image Source="/img/WindowUserPassport/save.png"></Image>
