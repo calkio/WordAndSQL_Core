@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dapper;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WordAndSQL_Core.Entity;
+using WordAndSQL_Core.ViewModels;
 
 namespace WordAndSQL_Core.Views.Windows
 {
@@ -22,6 +26,12 @@ namespace WordAndSQL_Core.Views.Windows
         public UserPassport()
         {
             InitializeComponent();
+        }
+
+        private void TableUser_Loaded(object sender, RoutedEventArgs e)
+        {
+            var user = new UserPassportViewModel();
+            TableUser.ItemsSource = user.GetDataUsers();
         }
     }
 }

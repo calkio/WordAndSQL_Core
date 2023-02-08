@@ -141,8 +141,9 @@
                            FontSize="20">Информация о группах</TextBlock>
             </Border>
 
-            <DataGrid Grid.Row="1"
-                      Margin="0,5,0,0">
+            <DataGrid x:Name="TableUser"
+                      Grid.Row="1"
+                      Margin="0,5,0,0" Loaded="TableUser_Loaded">
 
             </DataGrid>
         </Grid>
