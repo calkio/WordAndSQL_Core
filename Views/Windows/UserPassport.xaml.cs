@@ -77,7 +77,8 @@ namespace WordAndSQL_Core.Views.Windows
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            userPassportViewModel.SaveTextBox();
+            userPassportViewModel.SaveTextBox(SecondNameTB.Text, FirstNameTB.Text, SurnameTB.Text, NumberTB.Text, BirthDateTB.Text, PhoneTB.Text, LoginTB.Text, SnilsTB.Text, CitizenshipTB.Text, GenderTB.Text);
+            user = GetData();
             GetTextBox();
         }
 
@@ -88,7 +89,9 @@ namespace WordAndSQL_Core.Views.Windows
         /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            userPassportViewModel.SaveNotes();
+            userPassportViewModel.SaveNotes(PlaceWorkTB.Text, PostTB.Text, EducationTB.Text, CommentTB.Text);
+            userPassportViewModel.SaveTextBox(SecondNameTB.Text, FirstNameTB.Text, SurnameTB.Text, NumberTB.Text, BirthDateTB.Text, PhoneTB.Text, LoginTB.Text, SnilsTB.Text, CitizenshipTB.Text, GenderTB.Text);
+            user = GetData();
             GetTextBox();
         }
 

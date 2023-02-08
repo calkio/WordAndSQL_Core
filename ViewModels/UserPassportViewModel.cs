@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using WordAndSQL_Core.Entity;
 using WordAndSQL_Core.Views.Windows;
 
@@ -56,24 +57,11 @@ namespace WordAndSQL_Core.ViewModels
         /// <summary>
         /// Сохраняет данные из textBox
         /// </summary>
-        public void SaveTextBox()
+        public void SaveTextBox(string SecondName, string FirstName, string Surname, string Numder, string BirthDate, string Telephone, string Login, string Snils, string Citizenship, string Gender)
         {
             using (var connection = new SqlConnection(sqlConnection))
             {
-                UserPassport str = new UserPassport();
-
-                var sql = @"UPDATE Users SET 
-                            SecondName='Катя',
-                            FirstName='петя',
-                            Surname='Катя', 
-                            Numder='Катя',
-                            BirthDate='21.01.2003', 
-                            Telephone='Катя', 
-                            Login='Катя', 
-                            Snils='Катя', 
-                            Citizenship='Катя', 
-                            Gender='Катя'
-                            WHERE id=2";
+                var sql = $"UPDATE Users SET SecondName='{SecondName}', FirstName='{FirstName}', Surname='{Surname}', Numder='{Numder}', BirthDate='{BirthDate}', Telephone='{Telephone}', Login='{Login}', Snils='{Snils}', Citizenship='{Citizenship}', Gender='{Gender}' WHERE id=2";
 
                 var users = connection.Query(sql);
             }
@@ -82,16 +70,11 @@ namespace WordAndSQL_Core.ViewModels
         /// <summary>
         /// Сохраняются заметки
         /// </summary>
-        public void SaveNotes()
+        public void SaveNotes(string PlaceWork, string Post, string Education, string Comment)
         {
             using (var connection = new SqlConnection(sqlConnection))
             {
-                var sql = @"UPDATE Users SET 
-                            PlaceWork='Катя', 
-                            Post='Катя', 
-                            Education='Катя', 
-                            Comment='Катя'
-                            WHERE id=2";
+                var sql = $"UPDATE Users SET PlaceWork='{PlaceWork}', Post='{Post}', Education='{Education}', Comment='{Comment}' WHERE id=2";
 
                 var users = connection.Query(sql);
             }

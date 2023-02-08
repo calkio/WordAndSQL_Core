@@ -51,11 +51,10 @@
                          Margin="0,5,15,5"
                          VerticalContentAlignment="Center"></TextBox>
                 <TextBlock>Дата рождения</TextBlock>
-                <TextBox x:Name="BirthDateTB"
+                <DatePicker x:Name="BirthDateTB"
                          Height="25" 
-                         Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                         VerticalContentAlignment="Center"></DatePicker>
                 <TextBlock>СНИЛС</TextBlock>
                 <TextBox x:Name="SnilsTB"
                          Height="25" 
@@ -116,7 +115,14 @@
                 <Button Style="{StaticResource SButton}"
                         Height="40"
                         Margin="15" Click="Button_Click">
-                    Сохранить
+                    <StackPanel Orientation="Horizontal">
+                        <ContentControl Width="17" Height="17" Margin="2">
+                            <Image Source="/img/WindowUserPassport/save.png"></Image>
+                        </ContentControl>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Margin="2" 
+                           FontSize="12">Сохранить</TextBlock>
+                    </StackPanel>
                 </Button>
             </StackPanel>
 
