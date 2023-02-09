@@ -163,15 +163,18 @@
             </Border>
 
             <DataGrid x:Name="TableUser"
+                      Style="{StaticResource SDataGrid}"
                       Grid.Row="1"
                       Margin="0,5,0,0" Loaded="TableUser_Loaded"
                       IsReadOnly="True" 
-                      AutoGenerateColumns="False">
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="Column"
+                      CellStyle="{StaticResource CellCenterStyle}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Номер" Width="100" Binding="{Binding Path=Numder}"/>
                     <DataGridTextColumn Header="Название группы" Width="*" Binding="{Binding Path=NameGroup}"/>
                     <DataGridTextColumn Header="Вид" Width="110" Binding="{Binding Path=vid}"/>
-                    <DataGridTextColumn Header="Направление" Width="110" Binding="{Binding Path=Direction}"/>
+                    <DataGridTextColumn Header="Направление" Width="130" Binding="{Binding Path=Direction}"/>
                     <DataGridTextColumn Header="Начало" Width="110" Binding="{Binding Path=StartDate}"/>
                     <DataGridTextColumn Header="Конец" Width="110" Binding="{Binding Path=EndDate}"/>
                 </DataGrid.Columns>
