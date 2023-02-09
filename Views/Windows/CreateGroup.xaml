@@ -39,40 +39,46 @@
                    VerticalAlignment="Center" HorizontalAlignment="Right" 
                    Margin="10,0,10,0">Номер :</TextBlock>
 
-        <ComboBox Style="{StaticResource SComboBox}"
+        <ComboBox x:Name="VidCB" 
+                  Style="{StaticResource SComboBox}"
                   Grid.Column="1" Grid.Row="0" 
                   Margin="0,0,10,0" >
             <TextBlock Name="один">1</TextBlock>
             <TextBlock Name="два">2</TextBlock>
         </ComboBox>
-        <ComboBox Style="{StaticResource SComboBox}" 
+        <ComboBox x:Name="DirectionCB" 
+                  Style="{StaticResource SComboBox}" 
                   Grid.Column="1" Grid.Row="1" 
                   Margin="0,0,10,0" >
             <TextBlock Name="три">1</TextBlock>
             <TextBlock Name="четыри">2</TextBlock>
         </ComboBox>
-        <TextBox Grid.Column="1" Grid.Row="2" 
+        <TextBox x:Name="FirstNameTB" 
+                 Grid.Column="1" Grid.Row="2" 
                  Height="25" 
                  VerticalContentAlignment="Center" 
                  VerticalAlignment="Center"
                  BorderThickness="0,0,0,2"  
                  Margin="0,0,10,0"/>
         <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
-            <TextBox Grid.Column="1" Grid.Row="2" 
+            <TextBox x:Name="NumberTB" 
+                     Grid.Column="1" Grid.Row="2" 
                      Height="25" Width="100" 
                      VerticalContentAlignment="Center" 
                      VerticalAlignment="Center"
                      BorderThickness="0,0,0,2" 
                      Margin="0,0,10,0"/>
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right">Период обучения : с</TextBlock>
-            <DatePicker Grid.Column="1" Grid.Row="2" 
+            <DatePicker x:Name="StartDateDP"
+                        Grid.Column="1" Grid.Row="2" 
                         Height="25" Width="119" 
                         VerticalContentAlignment="Center" 
                         VerticalAlignment="Center"
                         BorderThickness="0,0,0,2"  
                         Margin="10,0,10,0"/>
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right">по</TextBlock>
-            <DatePicker Grid.Column="1" Grid.Row="2" 
+            <DatePicker x:Name="EndDateDP"
+                        Grid.Column="1" Grid.Row="2" 
                         Height="25" Width="119" 
                         VerticalContentAlignment="Center"
                         VerticalAlignment="Center"
@@ -99,7 +105,7 @@
                 Grid.Column="1" Grid.Row="4"
                 HorizontalAlignment="Right" 
                 Margin="0,0,30,0" 
-                Height="40" Width="150">
+                Height="40" Width="150" Click="Button_Click">
             <StackPanel Orientation="Horizontal">
                 <ContentControl Width="25" Height="25" Margin="2">
                     <Image Source="/img/WindowCreate/save.png"></Image>
