@@ -31,6 +31,7 @@
                             <RowDefinition Height="70"></RowDefinition>
                         </Grid.RowDefinitions>
 
+                        <!--Шапка-->
                         <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2">
                             <Image Source="/img/MainWindow/tabGroup/groupPeople.png" Height="70" HorizontalAlignment="Left" Margin="10,15,10,10"></Image>
                             <TextBlock TextWrapping="Wrap" 
@@ -60,6 +61,7 @@
                             </Button>
                         </StackPanel>
 
+                        <!--DataGrid-->
                         <DataGrid Grid.Row="1"
                                   Style="{StaticResource SDataGrid}"
                                   CellStyle="{StaticResource CellCenterStyle}"
@@ -71,14 +73,15 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="№"  Width="70" Binding="{Binding Path=Number}"/>
                                 <DataGridTextColumn Header="Назвние группы" Width="*" Binding="{Binding Path=FirstName}"/>
-                                <DataGridTextColumn Header="Кол-во людей" Width="100" Binding="{Binding Path=Amount}"/>
+                                <DataGridTextColumn Header="Кол-во людей" Width="120" Binding="{Binding Path=Amount}"/>
                                 <DataGridTextColumn Header="Вид" Width="100" Binding="{Binding Path=Vid}"/>
-                                <DataGridTextColumn Header="Направление" Width="100" Binding="{Binding Path=Direction}"/>
+                                <DataGridTextColumn Header="Направление" Width="120" Binding="{Binding Path=Direction}"/>
                                 <DataGridTextColumn Header="Начало" Width="100" Binding="{Binding Path=StartDate}"/>
                                 <DataGridTextColumn Header="Конец" Width="100" Binding="{Binding Path=EndDate}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
+                        <!--Кнопки-->
                         <StackPanel Grid.Row="2" 
                                     Orientation="Horizontal" 
                                     Grid.ColumnSpan="2" Grid.RowSpan="2">
@@ -127,7 +130,7 @@
                     </Grid>
                 </TabItem.Content>
             </TabItem>
-            <TabItem FontFamily="Times New Roman">
+            <TabItem FontFamily="Times New Roman" HorizontalAlignment="Left" Width="94">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Style="{StaticResource STextBlock}" 
@@ -175,14 +178,15 @@
                         </StackPanel>
             
                         <!--DataGrid-->
-                        <DataGrid x:Name="TableAllUser"
+                        <DataGrid Grid.Row="1"
+                                  x:Name="UserGrid"
                                   Style="{StaticResource SDataGrid}"
-                                  Grid.Row="1"
+                                  CellStyle="{StaticResource CellCenterStyle}"
                                   Margin="0,5,0,0" 
                                   IsReadOnly="True" 
                                   AutoGenerateColumns="False"
                                   HeadersVisibility="Column"
-                                  CellStyle="{StaticResource CellCenterStyle}" Loaded="TableAllUser_Loaded" MouseDoubleClick="TableAllUser_MouseDoubleClick">
+                                  ItemsSource="{Binding User}" MouseDoubleClick="UserGrid_MouseDoubleClick">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="№" Width="70" Binding="{Binding Path=Numder}"/>
                                 <DataGridTextColumn Header="ФИО слушателя" Width="*" Binding="{Binding Path=FullName}"/>

@@ -30,17 +30,14 @@ namespace WordAndSQL_Core
             InitializeComponent();
         }
 
-        private void TableAllUser_Loaded(object sender, RoutedEventArgs e)
-        {
-            TableAllUser.ItemsSource = mainWindowViewModel.GetDataUsers();
-        }
-
-        private void TableAllUser_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void UserGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             UserPassport userPassport = new UserPassport();
             userPassport.Owner = Application.Current.MainWindow;
             userPassport.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             userPassport.ShowDialog();
+
+            UserGrid.ItemsSource = mainWindowViewModel.User;
         }
     }
 }

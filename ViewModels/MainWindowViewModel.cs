@@ -22,13 +22,34 @@ namespace WordAndSQL_Core.ViewModels
         string sqlConnection = "Data Source=CALKIO\\MSSQLSERVER01;Initial Catalog=WordAndSQL;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 
+
+        #region Колекции
+
+        #region Колекция пользователей
+
+        private System.Collections.IEnumerable user;
+
+        public System.Collections.IEnumerable User
+        {
+            get => GetDataUsers();
+            set => Set(ref user, value);
+        }
+
+        #endregion
+
+        #region Колекция групп
+
         private System.Collections.IEnumerable group;
 
-        public System.Collections.IEnumerable Group 
-        { 
-            get => GetDataGroups(); 
-            set => Set(ref group, value); 
+        public System.Collections.IEnumerable Group
+        {
+            get => GetDataGroups();
+            set => Set(ref group, value);
         }
+
+        #endregion
+
+        #endregion
 
         #region Текст для окна удаления
 
@@ -192,6 +213,5 @@ namespace WordAndSQL_Core.ViewModels
 
         }
 
-        
     }
 }
