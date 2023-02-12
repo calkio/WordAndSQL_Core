@@ -21,6 +21,15 @@ namespace WordAndSQL_Core.ViewModels
 
         string sqlConnection = "Data Source=CALKIO\\MSSQLSERVER01;Initial Catalog=WordAndSQL;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+
+        private System.Collections.IEnumerable group;
+
+        public System.Collections.IEnumerable Group 
+        { 
+            get => GetDataGroups(); 
+            set => Set(ref group, value); 
+        }
+
         #region Текст для окна удаления
 
         static public string textDelete { get; set; }
@@ -140,6 +149,32 @@ namespace WordAndSQL_Core.ViewModels
             }
         }
 
+
+        /// <summary>
+        /// Заполняет таблицу всеми группами
+        /// </summary>
+        /// <returns></returns>
+        public List<Users> GetDataGroups()
+        {
+            try
+            {
+                using (var connection = new SqlConnection(sqlConnection))
+                {
+                    var sql = @"SELECT * FROM Groups";
+
+                    var users = connection.Query<Users>(sql).ToList();
+
+                    return users;
+                }
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                return new List<Users>();
+            }
+        }
+
         #endregion
 
 
@@ -156,5 +191,7 @@ namespace WordAndSQL_Core.ViewModels
             #endregion
 
         }
+
+        
     }
 }

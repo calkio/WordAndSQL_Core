@@ -59,12 +59,25 @@
                                     </StackPanel>
                             </Button>
                         </StackPanel>
-                        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
-                            <Button Height="200"
-                                    Command="{Binding UserPassportApplicationCommand}">
-                                
-                            </Button>
-                        </StackPanel>
+
+                        <DataGrid Grid.Row="1"
+                                  Style="{StaticResource SDataGrid}"
+                                  CellStyle="{StaticResource CellCenterStyle}"
+                                  Margin="0,5,0,0" 
+                                  IsReadOnly="True" 
+                                  AutoGenerateColumns="False"
+                                  HeadersVisibility="Column"
+                                  ItemsSource="{Binding Group}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="№"  Width="70" Binding="{Binding Path=Number}"/>
+                                <DataGridTextColumn Header="Назвние группы" Width="*" Binding="{Binding Path=FirstName}"/>
+                                <DataGridTextColumn Header="Кол-во людей" Width="100" Binding="{Binding Path=Amount}"/>
+                                <DataGridTextColumn Header="Вид" Width="100" Binding="{Binding Path=Vid}"/>
+                                <DataGridTextColumn Header="Направление" Width="100" Binding="{Binding Path=Direction}"/>
+                                <DataGridTextColumn Header="Начало" Width="100" Binding="{Binding Path=StartDate}"/>
+                                <DataGridTextColumn Header="Конец" Width="100" Binding="{Binding Path=EndDate}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
 
                         <StackPanel Grid.Row="2" 
                                     Orientation="Horizontal" 
