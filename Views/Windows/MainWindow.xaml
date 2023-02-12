@@ -130,6 +130,7 @@
                             <RowDefinition Height="70"></RowDefinition>
                         </Grid.RowDefinitions>
 
+                        <!--Шапка-->
                         <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="3">
                             <Image Source="/img/MainWindow/tabGroup/onePeople.png" Height="70" HorizontalAlignment="Left" Margin="10,15,10,10"></Image>
                             <TextBlock TextWrapping="Wrap" 
@@ -159,7 +160,23 @@
                                 </StackPanel>
                             </Button>
                         </StackPanel>
+            
+                        <!--DataGrid-->
+                        <DataGrid x:Name="TableAllUser"
+                                  Style="{StaticResource SDataGrid}"
+                                  Grid.Row="1"
+                                  Margin="0,5,0,0" 
+                                  IsReadOnly="True" 
+                                  AutoGenerateColumns="False"
+                                  HeadersVisibility="Column"
+                                  CellStyle="{StaticResource CellCenterStyle}" Loaded="TableAllUser_Loaded">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="№" Width="70" Binding="{Binding Path=Numder}"/>
+                                <DataGridTextColumn Header="ФИО слушателя" Width="*" Binding="{Binding Path=FullName}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
 
+                        <!--Кнопки-->
                         <StackPanel Grid.Row="2"
                                     Orientation="Horizontal" 
                                     Grid.ColumnSpan="2" Grid.RowSpan="2">

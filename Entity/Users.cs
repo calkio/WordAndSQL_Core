@@ -28,5 +28,9 @@ namespace WordAndSQL_Core.Entity
         public string Post { get; set; }
         public string Education { get; set; }
         public string Comment { get; set; }
+        public string FullName 
+        { 
+            get => SecondName + " " + FirstName + " " + Surname;
+        }
     }
 }

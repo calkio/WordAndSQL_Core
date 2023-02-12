@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WordAndSQL_Core.ViewModels;
 
 namespace WordAndSQL_Core
 {
@@ -20,9 +21,16 @@ namespace WordAndSQL_Core
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowViewModel mainWindowViewModel  = new MainWindowViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void TableAllUser_Loaded(object sender, RoutedEventArgs e)
+        {
+            TableAllUser.ItemsSource = mainWindowViewModel.GetDataUsers();
         }
     }
 }
