@@ -169,7 +169,7 @@
                                   IsReadOnly="True" 
                                   AutoGenerateColumns="False"
                                   HeadersVisibility="Column"
-                                  CellStyle="{StaticResource CellCenterStyle}" Loaded="TableAllUser_Loaded">
+                                  CellStyle="{StaticResource CellCenterStyle}" Loaded="TableAllUser_Loaded" MouseDoubleClick="TableAllUser_MouseDoubleClick">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="№" Width="70" Binding="{Binding Path=Numder}"/>
                                 <DataGridTextColumn Header="ФИО слушателя" Width="*" Binding="{Binding Path=FullName}"/>

@@ -12,6 +12,7 @@ using Microsoft.Data.SqlClient;
 using WordAndSQL_Core.Entity;
 using Dapper;
 using MySql.Data.MySqlClient;
+using WordAndSQL_Core.Infastructure.Commands.Base;
 
 namespace WordAndSQL_Core.ViewModels
 {
