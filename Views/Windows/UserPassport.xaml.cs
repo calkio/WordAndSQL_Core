@@ -58,17 +58,7 @@ namespace WordAndSQL_Core.Views.Windows
 
         #endregion
 
-        #region События окна
-
-        /// <summary>
-        /// Заполнение Таблицы данными
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TableUser_Loaded(object sender, RoutedEventArgs e)
-        {
-            TableUser.ItemsSource = userPassportViewModel.GetDataGroup();
-        }
+        #region Методы окна
 
         /// <summary>
         /// При нажатии на кнопку "Сохранить" сохраняются данные из textBox в базу данных

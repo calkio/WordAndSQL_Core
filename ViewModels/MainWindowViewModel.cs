@@ -21,8 +21,6 @@ namespace WordAndSQL_Core.ViewModels
 
         string sqlConnection = "Data Source=CALKIO\\MSSQLSERVER01;Initial Catalog=WordAndSQL;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-
-
         #region Колекции
 
         #region Колекция пользователей
@@ -170,7 +168,6 @@ namespace WordAndSQL_Core.ViewModels
             }
         }
 
-
         /// <summary>
         /// Заполняет таблицу всеми группами
         /// </summary>
@@ -210,7 +207,6 @@ namespace WordAndSQL_Core.ViewModels
             DeleteUserApplicationCommand = new LambdaCommand(OnDeleteUserApplicationCommandExecuted, CanDeleteUserApplicationCommandExecute);
 
             #endregion
-
         }
 
     }

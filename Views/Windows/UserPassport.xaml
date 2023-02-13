@@ -4,12 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WordAndSQL_Core.Views.Windows"
+        xmlns:vm="clr-namespace:WordAndSQL_Core.ViewModels"
         mc:Ignorable="d"
         Title="О слушателе" 
         MinHeight="800" MinWidth="1200"
         Height="800" Width="1200"
         FontFamily="Times New Roman" FontSize="16"
         WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:UserPassportViewModel/>
+    </Window.DataContext>
     <Grid Background="#ccebcc">
         <Grid.RowDefinitions>
             <RowDefinition Height="240"/>
@@ -162,18 +166,19 @@
                            FontSize="20">Информация о группах</TextBlock>
             </Border>
 
-            <DataGrid x:Name="TableUser"
+            <DataGrid x:Name="GroupsGrid"
                       Style="{StaticResource SDataGrid}"
+                      CellStyle="{StaticResource CellCenterStyle}"
                       Grid.Row="1"
-                      Margin="0,5,0,0" Loaded="TableUser_Loaded"
+                      Margin="0,5,0,0"
                       IsReadOnly="True" 
                       AutoGenerateColumns="False"
                       HeadersVisibility="Column"
-                      CellStyle="{StaticResource CellCenterStyle}">
+                      ItemsSource="{Binding Groups}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Номер" Width="100" Binding="{Binding Path=Numder}"/>
-                    <DataGridTextColumn Header="Название группы" Width="*" Binding="{Binding Path=NameGroup}"/>
-                    <DataGridTextColumn Header="Вид" Width="110" Binding="{Binding Path=vid}"/>
+                    <DataGridTextColumn Header="Номер" Width="100" Binding="{Binding Path=Number}"/>
+                    <DataGridTextColumn Header="Название группы" Width="*" Binding="{Binding Path=FirstName}"/>
+                    <DataGridTextColumn Header="Вид" Width="110" Binding="{Binding Path=Vid}"/>
                     <DataGridTextColumn Header="Направление" Width="130" Binding="{Binding Path=Direction}"/>
                     <DataGridTextColumn Header="Начало" Width="110" Binding="{Binding Path=StartDate}"/>
                     <DataGridTextColumn Header="Конец" Width="110" Binding="{Binding Path=EndDate}"/>
