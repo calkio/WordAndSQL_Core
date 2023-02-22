@@ -13,6 +13,7 @@ using WordAndSQL_Core.Entity;
 using Dapper;
 using MySql.Data.MySqlClient;
 using WordAndSQL_Core.Infastructure.Commands.Base;
+using Google.Protobuf.WellKnownTypes;
 
 namespace WordAndSQL_Core.ViewModels
 {
@@ -20,6 +21,38 @@ namespace WordAndSQL_Core.ViewModels
     {
 
         string sqlConnection = "Data Source=CALKIO\\MSSQLSERVER01;Initial Catalog=WordAndSQL;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+        #region Данные о выделенной строке
+
+        private Users _selectedUser { get; set; }
+
+        public Users SelectedUser
+        {
+            get { return _selectedUser; }
+            set
+            {
+                if (_selectedUser != value)
+                {
+                    _selectedUser = value;
+                    
+                    CreateWindow();
+                }
+            }
+        }
+
+        private void CreateWindow()
+        {
+            UserPassport userPassport = new UserPassport();
+            UserPassportViewModel userPassportViewModel = new UserPassportViewModel();
+            userPassportViewModel.SelectedUser = _selectedUser;
+            userPassport.DataContext = this;
+            userPassport.User = _selectedUser;
+            userPassport.Owner = Application.Current.MainWindow;
+            userPassport.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            userPassport.ShowDialog();
+        }
+
+        #endregion
 
         #region Колекции
 
@@ -180,9 +213,9 @@ namespace WordAndSQL_Core.ViewModels
                 {
                     var sql = @"SELECT * FROM Groups";
 
-                    var users = connection.Query<Users>(sql).ToList();
+                    var groups = connection.Query<Users>(sql).ToList();
 
-                    return users;
+                    return groups;
                 }
             }
             catch (System.Exception)
@@ -208,6 +241,5 @@ namespace WordAndSQL_Core.ViewModels
 
             #endregion
         }
-
     }
 }

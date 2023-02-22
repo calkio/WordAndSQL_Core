@@ -14,17 +14,21 @@
     <Window.DataContext>
         <vm:UserPassportViewModel/>
     </Window.DataContext>
-    <Grid Background="#ccebcc">
+    <Grid Background="#ccebcc" Loaded="Grid_Loaded">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="240"/>
             <RowDefinition/>
             <RowDefinition Height="230"/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
-        
+
         <!--Шапка-->
         <Grid Grid.Row="0"
-              Margin="15,15,15,3">
+              Margin="15,15,15,3" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition/>
@@ -151,10 +155,10 @@
                 </Button>
             </StackPanel>
         </Grid>
-        
+
         <!--Таблица-->
         <Grid Grid.Row="1"
-              Margin="15,3,15,3">
+              Margin="15,3,15,3" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition/>
@@ -166,7 +170,7 @@
                            FontSize="20">Информация о группах</TextBlock>
             </Border>
 
-            <DataGrid x:Name="GroupsGrid"
+            <DataGrid Name="GroupsGrid"
                       Style="{StaticResource SDataGrid}"
                       CellStyle="{StaticResource CellCenterStyle}"
                       Grid.Row="1"
@@ -185,12 +189,12 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        
+
         <!--Заметки-->
         <Border Grid.Row="2"
                 BorderBrush="LightGray" BorderThickness="1"
                 Margin="15,3,15,3" Padding="5"
-                CornerRadius="2">
+                CornerRadius="2" Grid.ColumnSpan="2">
             <Grid Width="900"
                  HorizontalAlignment="Left">
                 <Grid.ColumnDefinitions>
@@ -230,11 +234,11 @@
                 </StackPanel>
             </Grid>
         </Border>
-        
+
         <!--Кнопка сохранить-->
         <Button Style="{StaticResource SButton}"
                 Grid.Row="3"
-                Margin="15 10" Click="Button_Click_1">
+                Margin="15,10,15,10" Click="Button_Click_1" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
                 <ContentControl Width="25" Height="25" Margin="2">
                     <Image Source="/img/WindowUserPassport/save.png"></Image>

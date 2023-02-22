@@ -179,14 +179,14 @@
             
                         <!--DataGrid-->
                         <DataGrid Grid.Row="1"
-                                  x:Name="UserGrid"
+                                  Name="UserGrid"
                                   Style="{StaticResource SDataGrid}"
                                   CellStyle="{StaticResource CellCenterStyle}"
                                   Margin="0,5,0,0" 
                                   IsReadOnly="True" 
                                   AutoGenerateColumns="False"
                                   HeadersVisibility="Column"
-                                  ItemsSource="{Binding User}" MouseDoubleClick="UserGrid_MouseDoubleClick">
+                                  ItemsSource="{Binding User}" SelectedItem="{Binding SelectedUser}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="№" Width="70" Binding="{Binding Path=Numder}"/>
                                 <DataGridTextColumn Header="ФИО слушателя" Width="*" Binding="{Binding Path=FullName}"/>

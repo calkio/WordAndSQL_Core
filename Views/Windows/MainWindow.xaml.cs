@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WordAndSQL_Core.Entity;
 using WordAndSQL_Core.Infastructure.Commands;
 using WordAndSQL_Core.ViewModels;
 using WordAndSQL_Core.Views.Windows;
@@ -32,12 +33,11 @@ namespace WordAndSQL_Core
 
         private void UserGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+
             UserPassport userPassport = new UserPassport();
             userPassport.Owner = Application.Current.MainWindow;
             userPassport.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             userPassport.ShowDialog();
-
-            UserGrid.ItemsSource = mainWindowViewModel.User;
         }
     }
 }

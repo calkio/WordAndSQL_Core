@@ -9,15 +9,19 @@ namespace WordAndSQL_Core.Views.Windows
     /// </summary>
     public partial class UserPassport : Window
     {
-        Users user = new Users();
+        private Users user { get; set; }
+
+        public object User
+        {
+            get => user;
+            set => user = (Users)value;
+        }
+
         UserPassportViewModel userPassportViewModel = new UserPassportViewModel();
 
         public UserPassport()
         {
             InitializeComponent();
-
-            user = GetData();//загружаем данные в объект
-            GetTextBox();//Заполянем textBox данными из базы
         }
 
         #region Побочные методы
@@ -51,6 +55,7 @@ namespace WordAndSQL_Core.Views.Windows
         {
             var _user = new Users();
 
+            userPassportViewModel.SelectedUser = user;
             _user = userPassportViewModel.GetDataUsers();
 
             return _user;
@@ -85,6 +90,14 @@ namespace WordAndSQL_Core.Views.Windows
             GetTextBox();
         }
 
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            user = GetData();//загружаем данные в объект
+            GetTextBox();//Заполянем textBox данными из базы
+        }
+
         #endregion
+
+
     }
 }
