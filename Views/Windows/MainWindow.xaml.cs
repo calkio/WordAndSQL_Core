@@ -38,9 +38,19 @@ namespace WordAndSQL_Core
             userPassport.ShowDialog();
         }
 
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            UpdateGroup updateGroup = new UpdateGroup();
+            updateGroup.Owner = Application.Current.MainWindow;
+            updateGroup.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            updateGroup.ShowDialog();
+        }
+
         private void UserGrid_Loaded(object sender, RoutedEventArgs e)
         {
             UserGrid.ItemsSource = UsersObservableCollection.Users;
         }
+
+        
     }
 }

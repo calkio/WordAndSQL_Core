@@ -70,7 +70,9 @@
                                   IsReadOnly="True" 
                                   AutoGenerateColumns="False"
                                   HeadersVisibility="Column"
-                                  ItemsSource="{Binding Groups}">
+                                  ItemsSource="{Binding Groups}" 
+                                  SelectedItem="{Binding SelectedGroup}"
+                                  MouseDoubleClick="DataGrid_MouseDoubleClick">
                             <DataGrid.DataContext>
                                 <oc:GroupsObservableCollection/>
                             </DataGrid.DataContext>

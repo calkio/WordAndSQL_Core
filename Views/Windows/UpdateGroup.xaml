@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WordAndSQL_Core.Views.Windows" xmlns:vm="clr-namespace:WordAndSQL_Core.ViewModels"
+        xmlns:local="clr-namespace:WordAndSQL_Core.Views.Windows" 
+        xmlns:vm="clr-namespace:WordAndSQL_Core.ViewModels"
+        xmlns:oc="clr-namespace:WordAndSQL_Core.Collection"
         mc:Ignorable="d"
         Title="Параметры гурппы" 
         MinHeight="750" MinWidth="900" Height="750" Width="800"
@@ -43,8 +45,13 @@
                            VerticalAlignment="Center"
                            Margin="15,0,0,0">Номер:</TextBlock>
                 <TextBox Grid.Column="1" 
+                         Text="{Binding SelectedGroup.Number}"
                          Height="25" Width="250"
-                         VerticalContentAlignment="Center" HorizontalAlignment="Left"></TextBox>
+                         VerticalContentAlignment="Center" HorizontalAlignment="Left">
+                    <TextBox.DataContext>
+                        <oc:GroupsObservableCollection/>
+                    </TextBox.DataContext>
+                </TextBox>
                 <TextBlock Grid.Column="2"
                            VerticalAlignment="Center" HorizontalAlignment="Right"
                            Margin="10">Название:</TextBlock>
@@ -55,22 +62,36 @@
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right"
                            Margin="15,0,0,0">Период обучения : с</TextBlock>
                 <DatePicker Height="25" Width="119" 
-                        VerticalContentAlignment="Center" 
-                        VerticalAlignment="Center"
-                        BorderThickness="0,0,0,2"  
-                        Margin="10,0,10,0"/>
+                            Text="{Binding SelectedGroup.StartDate}"
+                            VerticalContentAlignment="Center" 
+                            VerticalAlignment="Center"
+                            BorderThickness="0,0,0,2"  
+                            Margin="10,0,10,0">
+                    <DatePicker.DataContext>
+                        <oc:GroupsObservableCollection/>
+                    </DatePicker.DataContext>
+                </DatePicker>
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right">по</TextBlock>
                 <DatePicker Height="25" Width="119" 
-                        VerticalContentAlignment="Center"
-                        VerticalAlignment="Center" HorizontalAlignment="Left"
-                        BorderThickness="0,0,0,2"  
-                        Margin="10,0,10,0"/>
+                            Text="{Binding SelectedGroup.StartDate}"
+                            VerticalContentAlignment="Center"
+                            VerticalAlignment="Center" HorizontalAlignment="Left"
+                            BorderThickness="0,0,0,2"  
+                            Margin="10,0,10,0">
+                    <DatePicker.DataContext>
+                        <oc:GroupsObservableCollection/>
+                    </DatePicker.DataContext>
+                </DatePicker>
             </DockPanel>
 
             <DockPanel Grid.Row="0" Grid.Column="1" 
-                     Grid.RowSpan="2">
+                       Grid.RowSpan="2">
                 <TextBox Margin="0,5,0,7" 
+                         Text="{Binding SelectedGroup.FirstName}"
                          AcceptsReturn = "True">
+                    <TextBox.DataContext>
+                        <oc:GroupsObservableCollection/>
+                    </TextBox.DataContext>
                 </TextBox>
             </DockPanel>
 
@@ -191,7 +212,7 @@
 
                                 <TextBlock Grid.Row="0"
                                            Margin="15,0,15,0"
-                                           VerticalAlignment="Center">Уже состоит в слеующих групах:</TextBlock>
+                                           VerticalAlignment="Center">Уже состоит в следующих групах:</TextBlock>
 
                                 <TextBox Grid.Row="1"
                                          Margin="15,0,15,15">
@@ -200,8 +221,6 @@
                             </Grid>
                         </Grid>
                     </Grid>
-
-
                 </TabItem.Content>
             </TabItem>
             <!--Вкладка Протоколы-->
