@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using WordAndSQL_Core.Collection;
 using WordAndSQL_Core.Entity;
 using WordAndSQL_Core.ViewModels;
 
@@ -9,19 +10,14 @@ namespace WordAndSQL_Core.Views.Windows
     /// </summary>
     public partial class UserPassport : Window
     {
-        private Users user { get; set; }
-
-        public object User
-        {
-            get => user;
-            set => user = (Users)value;
-        }
+        private Users SelectedUser { get; set; }
 
         UserPassportViewModel userPassportViewModel = new UserPassportViewModel();
 
         public UserPassport()
         {
             InitializeComponent();
+            SelectedUser = UsersObservableCollection.SelectedUser;
         }
 
         #region Побочные методы
@@ -31,20 +27,20 @@ namespace WordAndSQL_Core.Views.Windows
         /// </summary>
         private void GetTextBox()
         {
-            SecondNameTB.Text = user.SecondName;
-            FirstNameTB.Text = user.FirstName;
-            SurnameTB.Text = user.Surname;
-            NumberTB.Text = user.Numder;
-            BirthDateTB.Text = user.BirthDate;
-            PhoneTB.Text = user.Telephone;
-            LoginTB.Text = user.Login;
-            SnilsTB.Text = user.Snils;
-            CitizenshipTB.Text = user.Citizenship;
-            GenderTB.Text = user.Gender;
-            PlaceWorkTB.Text = user.PlaceWork;
-            PostTB.Text = user.Post;
-            EducationTB.Text = user.Education;
-            CommentTB.Text = user.Comment;
+            SecondNameTB.Text = SelectedUser.SecondName;
+            FirstNameTB.Text = SelectedUser.FirstName;
+            SurnameTB.Text = SelectedUser.Surname;
+            NumberTB.Text = SelectedUser.Numder;
+            BirthDateTB.Text = SelectedUser.BirthDate;
+            PhoneTB.Text = SelectedUser.Telephone;
+            LoginTB.Text = SelectedUser.Login;
+            SnilsTB.Text = SelectedUser.Snils;
+            CitizenshipTB.Text = SelectedUser.Citizenship;
+            GenderTB.Text = SelectedUser.Gender;
+            PlaceWorkTB.Text = SelectedUser.PlaceWork;
+            PostTB.Text = SelectedUser.Post;
+            EducationTB.Text = SelectedUser.Education;
+            CommentTB.Text = SelectedUser.Comment;
         }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace WordAndSQL_Core.Views.Windows
         {
             var _user = new Users();
 
-            userPassportViewModel.SelectedUser = user;
             _user = userPassportViewModel.GetDataUsers();
 
             return _user;
@@ -73,7 +68,7 @@ namespace WordAndSQL_Core.Views.Windows
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             userPassportViewModel.SaveTextBox(SecondNameTB.Text, FirstNameTB.Text, SurnameTB.Text, NumberTB.Text, BirthDateTB.Text, PhoneTB.Text, LoginTB.Text, SnilsTB.Text, CitizenshipTB.Text, GenderTB.Text);
-            user = GetData();
+            SelectedUser = GetData();
             GetTextBox();
         }
 
@@ -86,18 +81,17 @@ namespace WordAndSQL_Core.Views.Windows
         {
             userPassportViewModel.SaveNotes(PlaceWorkTB.Text, PostTB.Text, EducationTB.Text, CommentTB.Text);
             userPassportViewModel.SaveTextBox(SecondNameTB.Text, FirstNameTB.Text, SurnameTB.Text, NumberTB.Text, BirthDateTB.Text, PhoneTB.Text, LoginTB.Text, SnilsTB.Text, CitizenshipTB.Text, GenderTB.Text);
-            user = GetData();
+            SelectedUser = GetData();
             GetTextBox();
         }
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            user = GetData();//загружаем данные в объект
+            SelectedUser = GetData();//загружаем данные в объект
             GetTextBox();//Заполянем textBox данными из базы
         }
 
         #endregion
-
 
     }
 }

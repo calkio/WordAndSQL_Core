@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:WordAndSQL_Core.ViewModels" 
         xmlns:local="clr-namespace:WordAndSQL_Core"
+        xmlns:oc="clr-namespace:WordAndSQL_Core.Collection"
         mc:Ignorable="d"
         Title="Система управления обучения" 
         MinHeight="570" MinWidth="850" Height="600" Width="1000" 
@@ -69,7 +70,10 @@
                                   IsReadOnly="True" 
                                   AutoGenerateColumns="False"
                                   HeadersVisibility="Column"
-                                  ItemsSource="{Binding Group}">
+                                  ItemsSource="{Binding Groups}">
+                            <DataGrid.DataContext>
+                                <oc:GroupsObservableCollection/>
+                            </DataGrid.DataContext>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="№"  Width="70" Binding="{Binding Path=Number}"/>
                                 <DataGridTextColumn Header="Назвние группы" Width="*" Binding="{Binding Path=FirstName}"/>
@@ -186,7 +190,13 @@
                                   IsReadOnly="True" 
                                   AutoGenerateColumns="False"
                                   HeadersVisibility="Column"
-                                  ItemsSource="{Binding User}" SelectedItem="{Binding SelectedUser}">
+                                  ItemsSource="{Binding Users}" 
+                                  SelectedItem="{Binding SelectedUser}" 
+                                  MouseDoubleClick="UserGrid_MouseDoubleClick" 
+                                  Loaded="UserGrid_Loaded">
+                            <DataGrid.DataContext>
+                                <oc:UsersObservableCollection/>
+                            </DataGrid.DataContext>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="№" Width="70" Binding="{Binding Path=Numder}"/>
                                 <DataGridTextColumn Header="ФИО слушателя" Width="*" Binding="{Binding Path=FullName}"/>

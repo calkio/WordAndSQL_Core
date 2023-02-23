@@ -14,6 +14,11 @@ using Dapper;
 using MySql.Data.MySqlClient;
 using WordAndSQL_Core.Infastructure.Commands.Base;
 using Google.Protobuf.WellKnownTypes;
+using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
+using System.ComponentModel;
+using System.Collections.Specialized;
+using WordAndSQL_Core.Collection;
 
 namespace WordAndSQL_Core.ViewModels
 {
@@ -21,66 +26,6 @@ namespace WordAndSQL_Core.ViewModels
     {
 
         string sqlConnection = "Data Source=CALKIO\\MSSQLSERVER01;Initial Catalog=WordAndSQL;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
-        #region Данные о выделенной строке
-
-        private Users _selectedUser { get; set; }
-
-        public Users SelectedUser
-        {
-            get { return _selectedUser; }
-            set
-            {
-                if (_selectedUser != value)
-                {
-                    _selectedUser = value;
-                    
-                    CreateWindow();
-                }
-            }
-        }
-
-        private void CreateWindow()
-        {
-            UserPassport userPassport = new UserPassport();
-            UserPassportViewModel userPassportViewModel = new UserPassportViewModel();
-            userPassportViewModel.SelectedUser = _selectedUser;
-            userPassport.DataContext = this;
-            userPassport.User = _selectedUser;
-            userPassport.Owner = Application.Current.MainWindow;
-            userPassport.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            userPassport.ShowDialog();
-        }
-
-        #endregion
-
-        #region Колекции
-
-        #region Колекция пользователей
-
-        private System.Collections.IEnumerable user;
-
-        public System.Collections.IEnumerable User
-        {
-            get => GetDataUsers();
-            set => Set(ref user, value);
-        }
-
-        #endregion
-
-        #region Колекция групп
-
-        private System.Collections.IEnumerable group;
-
-        public System.Collections.IEnumerable Group
-        {
-            get => GetDataGroups();
-            set => Set(ref group, value);
-        }
-
-        #endregion
-
-        #endregion
 
         #region Текст для окна удаления
 
@@ -174,61 +119,6 @@ namespace WordAndSQL_Core.ViewModels
 
         #endregion
 
-        #region Методы 
-
-        /// <summary>
-        /// Заполняет таблицу всеми users
-        /// </summary>
-        /// <returns></returns>
-        public List<Users> GetDataUsers()
-        {
-            try
-            {
-                using (var connection = new SqlConnection(sqlConnection))
-                {
-                    var sql = @"SELECT * FROM Users";
-
-                    var users = connection.Query<Users>(sql).ToList();
-
-                    return users;
-                }
-            }
-            catch (System.Exception)
-            {
-                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                return new List<Users>();
-            }
-        }
-
-        /// <summary>
-        /// Заполняет таблицу всеми группами
-        /// </summary>
-        /// <returns></returns>
-        public List<Users> GetDataGroups()
-        {
-            try
-            {
-                using (var connection = new SqlConnection(sqlConnection))
-                {
-                    var sql = @"SELECT * FROM Groups";
-
-                    var groups = connection.Query<Users>(sql).ToList();
-
-                    return groups;
-                }
-            }
-            catch (System.Exception)
-            {
-                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                return new List<Users>();
-            }
-        }
-
-        #endregion
-
-
         public MainWindowViewModel()
         {
             #region Команды
@@ -240,6 +130,9 @@ namespace WordAndSQL_Core.ViewModels
             DeleteUserApplicationCommand = new LambdaCommand(OnDeleteUserApplicationCommandExecuted, CanDeleteUserApplicationCommandExecute);
 
             #endregion
+
+            UsersObservableCollection usersObservableCollection = new UsersObservableCollection();//вызывается экземпляр, чтобы обновить колекцию
+            GroupsObservableCollection groupsObservableCollection = new GroupsObservableCollection();//вызывается экземпляр, чтобы обновить колекцию
         }
     }
 }
