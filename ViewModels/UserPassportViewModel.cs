@@ -21,98 +21,23 @@ namespace WordAndSQL_Core.ViewModels
         
         public Users SelectedUser { get; set; }
 
-        #region Колекции
-
-        #region Колекция групп
-
-        private System.Collections.IEnumerable groups;
-
-        public System.Collections.IEnumerable Groups
-        {
-            get => GetDataGroups();
-            set => Set(ref groups, value);
-        }
-
         public UserPassportViewModel()
         {
             SelectedUser = UsersObservableCollection.SelectedUser;
         }
-
-        #endregion
-
-        #endregion
-
-        #region Данныe о пользователи
-
-        /// <summary>
-        /// Дает данные для таблицы
-        /// </summary>
-        /// <returns></returns>
-        public Users GetDataUsers()
-        {
-            try
-            {
-                using (var connection = new SqlConnection(sqlConnection))
-                {
-                    var sql = $"SELECT * FROM Users WHERE id={SelectedUser.id}";
-
-                    var user = connection.QuerySingle<Users>(sql);
-
-                    return user;
-                }
-            }
-            catch (System.Exception)
-            {
-                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                return new Users();
-            }
-            
-        }
-
-        #endregion
-
-        #region Данныe для таблицы
-
-        /// <summary>
-        /// Дает данные для таблицы
-        /// </summary>
-        /// <returns></returns>
-        public List<Groups> GetDataGroups()
-        {
-            try
-            {
-                using (var connection = new SqlConnection(sqlConnection))
-                {
-                    var sql = @"SELECT * FROM Groups";
-
-                    var Groups = connection.Query<Groups>(sql).ToList();
-
-                    return Groups;
-                }
-            }
-            catch (System.Exception)
-            {
-                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
-
-                return new List<Groups>();
-            }
-        }
-
-        #endregion
 
         #region Сохранение данных из textBox
 
         /// <summary>
         /// Сохраняет данные из textBox
         /// </summary>
-        public void SaveTextBox(string SecondName, string FirstName, string Surname, string Numder, string BirthDate, string Telephone, string Login, string Snils, string Citizenship, string Gender)
+        public void SaveTextBox()
         {
             try
             {
                 using (var connection = new SqlConnection(sqlConnection))
                 {
-                    var sql = $"UPDATE Users SET SecondName='{SecondName}', FirstName='{FirstName}', Surname='{Surname}', Numder='{Numder}', BirthDate='{BirthDate}', Telephone='{Telephone}', Login='{Login}', Snils='{Snils}', Citizenship='{Citizenship}', Gender='{Gender}' WHERE id={SelectedUser.id}";
+                    var sql = $"UPDATE Users SET SecondName='{SelectedUser.SecondName}', FirstName='{SelectedUser.FirstName}', Surname='{SelectedUser.Surname}', Numder='{SelectedUser.Numder}', BirthDate='{SelectedUser.BirthDate}', Telephone='{SelectedUser.Telephone}', Login='{SelectedUser.Login}', Snils='{SelectedUser.Snils}', Citizenship='{SelectedUser.Citizenship}', Gender='{SelectedUser.Gender}' WHERE id={SelectedUser.id}";
 
                     var users = connection.Query(sql);
 
@@ -130,13 +55,13 @@ namespace WordAndSQL_Core.ViewModels
         /// <summary>
         /// Сохраняются заметки
         /// </summary>
-        public void SaveNotes(string PlaceWork, string Post, string Education, string Comment)
+        public void SaveNotes()
         {
             try
             {
                 using (var connection = new SqlConnection(sqlConnection))
                 {
-                    var sql = $"UPDATE Users SET PlaceWork='{PlaceWork}', Post='{Post}', Education='{Education}', Comment='{Comment}' WHERE id={SelectedUser.id}";
+                    var sql = $"UPDATE Users SET SecondName='{SelectedUser.SecondName}', FirstName='{SelectedUser.FirstName}', Surname='{SelectedUser.Surname}', Numder='{SelectedUser.Numder}', BirthDate='{SelectedUser.BirthDate}', Telephone='{SelectedUser.Telephone}', Login='{SelectedUser.Login}', Snils='{SelectedUser.Snils}', Citizenship='{SelectedUser.Citizenship}', Gender='{SelectedUser.Gender}', PlaceWork='{SelectedUser.PlaceWork}', Post='{SelectedUser.Post}', Education='{SelectedUser.Education}', Comment='{SelectedUser.Comment}' WHERE id={SelectedUser.id}";
 
                     var users = connection.Query(sql);
 

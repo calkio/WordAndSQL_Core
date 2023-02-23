@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WordAndSQL_Core.Views.Windows"
         xmlns:vm="clr-namespace:WordAndSQL_Core.ViewModels"
+        xmlns:oc="clr-namespace:WordAndSQL_Core.Collection"
         mc:Ignorable="d"
         Title="О слушателе" 
         MinHeight="800" MinWidth="1200"
@@ -14,7 +15,7 @@
     <Window.DataContext>
         <vm:UserPassportViewModel/>
     </Window.DataContext>
-    <Grid Background="#ccebcc" Loaded="Grid_Loaded">
+    <Grid Background="#ccebcc">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition/>
@@ -54,72 +55,122 @@
                         Margin="0,7,0,0">
                 <TextBlock>Фамилия</TextBlock>
                 <TextBox x:Name="SecondNameTB"
+                         Text="{Binding SelectedUser.SecondName}"
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                         VerticalContentAlignment="Center">
+                    <TextBox.DataContext>
+                        <oc:UsersObservableCollection/>
+                    </TextBox.DataContext>
+                </TextBox>
                 <TextBlock>Дата рождения</TextBlock>
                 <DatePicker x:Name="BirthDateTB"
-                         Height="25" 
-                         Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></DatePicker>
+                            Text="{Binding SelectedUser.BirthDate}"
+                            Height="25" 
+                            Margin="0,5,15,5"
+                            VerticalContentAlignment="Center">
+                    <DatePicker.DataContext>
+                        <oc:UsersObservableCollection/>
+                    </DatePicker.DataContext>
+                </DatePicker>
                 <TextBlock>СНИЛС</TextBlock>
                 <TextBox x:Name="SnilsTB"
+                         Text="{Binding SelectedUser.Snils}"
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                         VerticalContentAlignment="Center">
+                    <TextBox.DataContext>
+                        <oc:UsersObservableCollection/>
+                    </TextBox.DataContext>
+                </TextBox>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1"
                         Margin="0,7,0,0">
                 <TextBlock>Имя</TextBlock>
                 <TextBox x:Name="FirstNameTB"
+                         Text="{Binding SelectedUser.FirstName}"
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                         VerticalContentAlignment="Center">
+                    <TextBox.DataContext>
+                        <oc:UsersObservableCollection/>
+                    </TextBox.DataContext>
+                </TextBox>
                 <TextBlock>Телефон</TextBlock>
                 <TextBox x:Name="PhoneTB"
+                         Text="{Binding SelectedUser.Telephone}"
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                         VerticalContentAlignment="Center">
+                    <TextBox.DataContext>
+                        <oc:UsersObservableCollection/>
+                    </TextBox.DataContext>
+                </TextBox>
                 <TextBlock>Гражданство</TextBlock>
                 <TextBox x:Name="CitizenshipTB"
+                         Text="{Binding SelectedUser.Citizenship}"
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                         VerticalContentAlignment="Center">
+                    <TextBox.DataContext>
+                        <oc:UsersObservableCollection/>
+                    </TextBox.DataContext>
+                </TextBox>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="2"
                         Margin="0,7,0,0">
                 <TextBlock>Отчество</TextBlock>
                 <TextBox x:Name="SurnameTB"
+                         Text="{Binding SelectedUser.Surname}"
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                         VerticalContentAlignment="Center">
+                    <TextBox.DataContext>
+                        <oc:UsersObservableCollection/>
+                    </TextBox.DataContext>
+                </TextBox>
                 <TextBlock>Логин</TextBlock>
                 <TextBox x:Name="LoginTB"
+                         Text="{Binding SelectedUser.Login}"
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                         VerticalContentAlignment="Center">
+                    <TextBox.DataContext>
+                        <oc:UsersObservableCollection/>
+                    </TextBox.DataContext>
+                </TextBox>
                 <TextBlock>Пол</TextBlock>
                 <TextBox x:Name="GenderTB"
+                         Text="{Binding SelectedUser.Gender}"
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                         VerticalContentAlignment="Center">
+                    <TextBox.DataContext>
+                        <oc:UsersObservableCollection/>
+                    </TextBox.DataContext>
+                </TextBox>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="3"
                         Margin="0,7,0,0">
                 <TextBlock>Номер</TextBlock>
                 <TextBox x:Name="NumberTB"
+                         Text="{Binding SelectedUser.Numder}"
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,0,5"
-                         VerticalContentAlignment="Center"></TextBox>
+                         VerticalContentAlignment="Center">
+                    <TextBox.DataContext>
+                        <oc:UsersObservableCollection/>
+                    </TextBox.DataContext>
+                </TextBox>
                 <Button Style="{StaticResource SButton}"
                         Height="40"
                         Margin="15" Click="Button_Click">
@@ -179,6 +230,9 @@
                       AutoGenerateColumns="False"
                       HeadersVisibility="Column"
                       ItemsSource="{Binding Groups}">
+                <DataGrid.DataContext>
+                    <oc:GroupsObservableCollection/>
+                </DataGrid.DataContext>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Номер" Width="100" Binding="{Binding Path=Number}"/>
                     <DataGridTextColumn Header="Название группы" Width="*" Binding="{Binding Path=FirstName}"/>
@@ -206,31 +260,51 @@
                         Margin="0,7,0,0">
                     <TextBlock>Место работы:</TextBlock>
                     <TextBox x:Name="PlaceWorkTB"
+                             Text="{Binding SelectedUser.PlaceWork}"
                              Height="70" 
                              Style="{StaticResource STextBox}"
                              Margin="0,5,15,5"
-                             AcceptsReturn = "True"></TextBox>
+                             AcceptsReturn = "True">
+                        <TextBox.DataContext>
+                            <oc:UsersObservableCollection/>
+                        </TextBox.DataContext>
+                    </TextBox>
                     <TextBlock>Должность:</TextBlock>
                     <TextBox x:Name="PostTB"
+                             Text="{Binding SelectedUser.Post}"
                              Height="70" 
                              Style="{StaticResource STextBox}"
                              Margin="0,5,15,5"
-                             AcceptsReturn = "True"></TextBox>
+                             AcceptsReturn = "True">
+                        <TextBox.DataContext>
+                            <oc:UsersObservableCollection/>
+                        </TextBox.DataContext>
+                    </TextBox>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
                         Margin="0,7,0,0">
                     <TextBlock>Образование:</TextBlock>
                     <TextBox x:Name="EducationTB"
+                             Text="{Binding SelectedUser.Education}"
                              Height="70" 
                              Style="{StaticResource STextBox}"
                              Margin="0,5,15,5"
-                             AcceptsReturn = "True"></TextBox>
+                             AcceptsReturn = "True">
+                        <TextBox.DataContext>
+                            <oc:UsersObservableCollection/>
+                        </TextBox.DataContext>
+                    </TextBox>
                     <TextBlock>Примечания:</TextBlock>
                     <TextBox x:Name="CommentTB"
+                             Text="{Binding SelectedUser.Comment}"
                              Height="70" 
                              Style="{StaticResource STextBox}"
                              Margin="0,5,15,5"
-                             AcceptsReturn = "True"></TextBox>
+                             AcceptsReturn = "True">
+                        <TextBox.DataContext>
+                            <oc:UsersObservableCollection/>
+                        </TextBox.DataContext>
+                    </TextBox>
                 </StackPanel>
             </Grid>
         </Border>
