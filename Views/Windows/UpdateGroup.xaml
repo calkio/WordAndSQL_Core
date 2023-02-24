@@ -170,6 +170,7 @@
                                        Margin="15,0,15,0">Слушатели в групе:</TextBlock>
 
                             <DataGrid Grid.Row="1"
+                                      Name="UsersInSelectedGroup"
                                       Style="{StaticResource SDataGrid}"
                                       CellStyle="{StaticResource CellCenterStyle}"
                                       Margin="15,0,15,15" 
@@ -183,7 +184,7 @@
                                 </DataGrid.DataContext>
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="№"  Width="70" Binding="{Binding Path=Numder}"/>
-                                    <DataGridTextColumn Header="ФИО слушателя" Width="*" Binding="{Binding Path=FirstName}"/>
+                                    <DataGridTextColumn Header="ФИО слушателя" Width="*" Binding="{Binding Path=FullName}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
 
@@ -214,16 +215,17 @@
                                        Margin="15,0,15,0">Все слушатели:</TextBlock>
 
                             <DataGrid Grid.Row="1"
-                                  Name="UserGrid"
-                                  Style="{StaticResource SDataGrid}"
-                                  CellStyle="{StaticResource CellCenterStyle}"
-                                  Margin="15,0,15,0" 
-                                  IsReadOnly="True" 
-                                  AutoGenerateColumns="False"
-                                  HeadersVisibility="Column"
-                                  ItemsSource="{Binding Users}" 
-                                  SelectedItem="{Binding SelectedUser}" 
-                                  SelectionChanged="UserGrid_SelectionChanged">
+                                      Name="UserGrid"
+                                      Style="{StaticResource SDataGrid}"
+                                      CellStyle="{StaticResource CellCenterStyle}"
+                                      Margin="15,0,15,0" 
+                                      IsReadOnly="True" 
+                                      AutoGenerateColumns="False"
+                                      HeadersVisibility="Column"
+                                      ItemsSource="{Binding Users}" 
+                                      SelectedItem="{Binding SelectedUser}" 
+                                      SelectionChanged="UserGrid_SelectionChanged" 
+                                      MouseDoubleClick="UserGrid_MouseDoubleClick">
                                 <DataGrid.DataContext>
                                     <oc:AllUsersUpdateGroupObservableCollection/>
                                 </DataGrid.DataContext>

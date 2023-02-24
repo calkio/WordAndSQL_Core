@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WordAndSQL_Core.Collection;
+using WordAndSQL_Core.ViewModels;
 
 namespace WordAndSQL_Core.Views.Windows
 {
@@ -29,6 +20,14 @@ namespace WordAndSQL_Core.Views.Windows
         {
             var groupsInUserObservableCollection = new GroupsInUserObservableCollection();
             GroupsInUser.ItemsSource = GroupsInUserObservableCollection.Groups;
+        }
+
+        private void UserGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var updateGroupViewModel = new UpdateGroupViewModel();
+            updateGroupViewModel.UpdateDataGrid();
+            var usersInGroupObservableCollection = new UsersInGroupObservableCollection();
+            UsersInSelectedGroup.ItemsSource = UsersInGroupObservableCollection.Users;
         }
     }
 }

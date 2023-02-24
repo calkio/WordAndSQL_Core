@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using System.Windows;
 using WordAndSQL_Core.Infastructure.Commands;
 using WordAndSQL_Core.Views.Windows;
+using Microsoft.Data.SqlClient;
+using Dapper;
+using WordAndSQL_Core.Collection;
+using WordAndSQL_Core.ViewModels.Base;
 
 namespace WordAndSQL_Core.ViewModels
 {
-    class UpdateGroupViewModel
+    class UpdateGroupViewModel : ViewModel
     {
+        string sqlConnection = "Data Source=CALKIO\\MSSQLSERVER01;Initial Catalog=WordAndSQL;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
         #region Команды
 
         #region Команда открытия окна добавления
@@ -32,6 +33,53 @@ namespace WordAndSQL_Core.ViewModels
 
         #endregion
 
+        #region Методы
+
+        /// <summary>
+        /// Удаление из базы многие ко многим пользователя 
+        /// </summary>
+        private void DeleteUserFromUserGrid()
+        {
+            try
+            {
+                AllUsersUpdateGroupObservableCollection.Users.Remove(AllUsersUpdateGroupObservableCollection.SelectedUser);
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        /// <summary>
+        /// Добавление в базу многие ко многим пользователя, присвоение пользователю группу
+        /// </summary>
+        private void InsertUserInUsersInSelectedGroup()
+        {
+            try
+            {
+                using (var connection = new SqlConnection(sqlConnection))
+                {
+                    var sql = $"INSERT Users_Groups VALUES ({AllUsersUpdateGroupObservableCollection.SelectedUser.id}, {GroupsObservableCollection.SelectedGroup.id})";
+
+                    connection.Query(sql);
+                }
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        /// <summary>
+        /// При даблклике на пользователя удаляется из одного DataGrid и добавляется в другой 
+        /// </summary>
+        public void UpdateDataGrid()
+        {
+            InsertUserInUsersInSelectedGroup();
+            DeleteUserFromUserGrid();
+        }
+
+        #endregion
 
         public UpdateGroupViewModel()
         {
@@ -40,7 +88,6 @@ namespace WordAndSQL_Core.ViewModels
             OpenImportApplicationCommand = new LambdaCommand(OnImportApplicationCommandExecuted, CanImportApplicationCommandExecute);
 
             #endregion
-
         }
     }
 }

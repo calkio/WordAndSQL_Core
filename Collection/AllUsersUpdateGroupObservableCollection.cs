@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
@@ -49,7 +50,7 @@ namespace WordAndSQL_Core.Collection
         public AllUsersUpdateGroupObservableCollection()
         {
             users = FillingGridUsers();
-            users.CollectionChanged += ContentCollectionChanged;
+            users = DeleteItemInCollection();
         }
 
         /// <summary>
@@ -83,33 +84,22 @@ namespace WordAndSQL_Core.Collection
             }
         }
 
-        /// <summary>
-        /// Вызывается при изменении колекции, но почему то не работает
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void ContentCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        private ObservableCollection<Users> DeleteItemInCollection()
         {
-            switch (e.Action)
+            var usersCollection = new ObservableCollection<Users>();
+            bool isAdd = true;
+
+            foreach (var item1 in users)
             {
-                case NotifyCollectionChangedAction.Add: // если добавление
-                    if (e.NewItems?[0] is Users newUser)
-                    {
-                        MessageBox.Show($"Новый пользователь {newUser.FullName}", "Сообщение!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    break;
-                case NotifyCollectionChangedAction.Remove: // если удаление
-                    if (e.OldItems?[0] is Users oldUser)
-                    {
-                        MessageBox.Show($"Пользователь удален {oldUser.FullName}", "Сообщение!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    break;
-                case NotifyCollectionChangedAction.Replace: // если замена
-                    if ((e.NewItems?[0] is Users replacingUser) &&
-                        (e.OldItems?[0] is Users replacedUser))
-                        MessageBox.Show($"Объект {replacedUser.FullName} заменен объектом {replacingUser.FullName}", "Сообщение!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    break;
+                isAdd = true;
+                foreach (var item2 in UsersInGroupObservableCollection.Users)
+                {
+                    if (item1.id == item2.id) isAdd = false;
+                }
+                if (isAdd) usersCollection.Add(item1);
             }
+
+            return usersCollection;
         }
     }
 }

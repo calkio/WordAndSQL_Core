@@ -49,7 +49,6 @@ namespace WordAndSQL_Core.Collection
         public UsersObservableCollection()
         {
             users = FillingGridUsers();
-            users.CollectionChanged += ContentCollectionChanged;
         }
 
         /// <summary>
@@ -80,35 +79,6 @@ namespace WordAndSQL_Core.Collection
                 MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
 
                 return new ObservableCollection<Users>();
-            }
-        }
-
-        /// <summary>
-        /// Вызывается при изменении колекции, но почему то не работает
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void ContentCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-        {
-            switch (e.Action)
-            {
-                case NotifyCollectionChangedAction.Add: // если добавление
-                    if (e.NewItems?[0] is Users newUser)
-                    {
-                        MessageBox.Show($"Новый пользователь {newUser.FullName}", "Сообщение!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    break;
-                case NotifyCollectionChangedAction.Remove: // если удаление
-                    if (e.OldItems?[0] is Users oldUser)
-                    {
-                        MessageBox.Show($"Пользователь удален {oldUser.FullName}", "Сообщение!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    break;
-                case NotifyCollectionChangedAction.Replace: // если замена
-                    if ((e.NewItems?[0] is Users replacingUser) &&
-                        (e.OldItems?[0] is Users replacedUser))
-                        MessageBox.Show($"Объект {replacedUser.FullName} заменен объектом {replacingUser.FullName}", "Сообщение!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    break;
             }
         }
     }

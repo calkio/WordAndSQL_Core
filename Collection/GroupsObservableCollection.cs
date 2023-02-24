@@ -49,7 +49,6 @@ namespace WordAndSQL_Core.Collection
         public GroupsObservableCollection()
         {
             groups = FillingGridGroups();
-            groups.CollectionChanged += ContentCollectionChanged;
         }
 
         /// <summary>
@@ -82,35 +81,5 @@ namespace WordAndSQL_Core.Collection
                 return new ObservableCollection<Groups>();
             }
         }
-
-        /// <summary>
-        /// Вызывается при изменении колекции, но почему то не работает
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void ContentCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
-        {
-            switch (e.Action)
-            {
-                case NotifyCollectionChangedAction.Add: // если добавление
-                    if (e.NewItems?[0] is Groups newGroup)
-                    {
-                        MessageBox.Show($"Новый пользователь {newGroup.FirstName}", "Сообщение!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    break;
-                case NotifyCollectionChangedAction.Remove: // если удаление
-                    if (e.OldItems?[0] is Groups oldGroup)
-                    {
-                        MessageBox.Show($"Пользователь удален {oldGroup.FirstName}", "Сообщение!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    break;
-                case NotifyCollectionChangedAction.Replace: // если замена
-                    if ((e.NewItems?[0] is Groups replacingGroup) &&
-                        (e.OldItems?[0] is Groups replacedGroup))
-                        MessageBox.Show($"Объект {replacedGroup.FirstName} заменен объектом {replacingGroup.FirstName}", "Сообщение!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    break;
-            }
-        }
-
     }
 }
