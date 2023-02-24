@@ -178,7 +178,8 @@
                                       AutoGenerateColumns="False"
                                       HeadersVisibility="Column"
                                       ItemsSource="{Binding Users}" 
-                                      SelectedItem="{Binding SelectedUser}">
+                                      SelectedItem="{Binding SelectedUser}"
+                                      MouseDoubleClick="UsersInSelectedGroup_MouseDoubleClick">
                                 <DataGrid.DataContext>
                                     <oc:UsersInGroupObservableCollection/>
                                 </DataGrid.DataContext>

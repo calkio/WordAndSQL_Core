@@ -35,6 +35,8 @@ namespace WordAndSQL_Core.ViewModels
 
         #region Методы
 
+        #region Присваивание пользователю его группу
+
         /// <summary>
         /// Удаление из базы многие ко многим пользователя 
         /// </summary>
@@ -73,11 +75,54 @@ namespace WordAndSQL_Core.ViewModels
         /// <summary>
         /// При даблклике на пользователя удаляется из одного DataGrid и добавляется в другой 
         /// </summary>
-        public void UpdateDataGrid()
+        public void UpdateUserGrid()
         {
             InsertUserInUsersInSelectedGroup();
             DeleteUserFromUserGrid();
         }
+
+        #endregion
+
+        #region Выгнать пользователя из группы
+
+        private void DeleteUserFromUsersInSelectedGroup()
+        {
+            try
+            {
+                using (var connection = new SqlConnection(sqlConnection))
+                {
+                    var sql = $"DELETE Users_Groups WHERE idUser = {UsersInGroupObservableCollection.SelectedUser.id} and idGroup = {GroupsObservableCollection.SelectedGroup.id}";
+
+                    connection.Query(sql);
+                }
+
+                UsersInGroupObservableCollection.Users.Remove(UsersInGroupObservableCollection.SelectedUser);
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void InsertUserInUserGrid()
+        {
+            try
+            {
+                AllUsersUpdateGroupObservableCollection.Users.Add(UsersInGroupObservableCollection.SelectedUser);
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        public void UpdateUsersInSelectedGroup()
+        {
+            InsertUserInUserGrid();
+            DeleteUserFromUsersInSelectedGroup();
+        }
+
+        #endregion
 
         #endregion
 

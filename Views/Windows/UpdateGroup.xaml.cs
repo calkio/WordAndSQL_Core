@@ -25,9 +25,17 @@ namespace WordAndSQL_Core.Views.Windows
         private void UserGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var updateGroupViewModel = new UpdateGroupViewModel();
-            updateGroupViewModel.UpdateDataGrid();
+            updateGroupViewModel.UpdateUserGrid();
             var usersInGroupObservableCollection = new UsersInGroupObservableCollection();
             UsersInSelectedGroup.ItemsSource = UsersInGroupObservableCollection.Users;
+        }
+
+        private void UsersInSelectedGroup_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var updateGroupViewModel = new UpdateGroupViewModel();
+            updateGroupViewModel.UpdateUsersInSelectedGroup();
+            var allUsersUpdateGroupObservableCollection = new AllUsersUpdateGroupObservableCollection();
+            UserGrid.ItemsSource = AllUsersUpdateGroupObservableCollection.Users;
         }
     }
 }
