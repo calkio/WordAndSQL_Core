@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WordAndSQL_Core.Collection;
 
 namespace WordAndSQL_Core.Views.Windows
 {
@@ -22,6 +23,12 @@ namespace WordAndSQL_Core.Views.Windows
         public UpdateGroup()
         {
             InitializeComponent();
+        }
+
+        private void UserGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var groupsInUserObservableCollection = new GroupsInUserObservableCollection();
+            GroupsInUser.ItemsSource = GroupsInUserObservableCollection.Groups;
         }
     }
 }

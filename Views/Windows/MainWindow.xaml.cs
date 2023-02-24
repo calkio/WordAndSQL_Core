@@ -50,7 +50,5 @@ namespace WordAndSQL_Core
         {
             UserGrid.ItemsSource = UsersObservableCollection.Users;
         }
-
-        
     }
 }
