@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WordAndSQL_Core.Collection;
+using WordAndSQL_Core.ViewModels;
 
 namespace WordAndSQL_Core.Views.Windows
 {
@@ -22,6 +24,12 @@ namespace WordAndSQL_Core.Views.Windows
         public DeleteUser()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteUserViewModel deleteUserViewModel = new DeleteUserViewModel();
+            deleteUserViewModel.DeleteSelectedUser();
         }
     }
 }

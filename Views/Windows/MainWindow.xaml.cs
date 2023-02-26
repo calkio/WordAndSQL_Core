@@ -45,10 +45,5 @@ namespace WordAndSQL_Core
             updateGroup.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             updateGroup.ShowDialog();
         }
-
-        private void UserGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            UserGrid.ItemsSource = UsersObservableCollection.Users;
-        }
     }
 }

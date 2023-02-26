@@ -32,7 +32,7 @@
                            Margin="15"
                            FontSize="26"
                            LineHeight="Auto" Width="335"
-                           TextWrapping="Wrap">Вы действительно хотите удалить выбранного человека?</TextBlock>
+                           TextWrapping="Wrap">Вы действительно хотите удалить выбранную группу?</TextBlock>
                 <Image Source="/img/WindowDelete/iconDelete.png"
                        Margin="15"></Image>
             </StackPanel>
@@ -46,8 +46,10 @@
 
                 <Button Style="{StaticResource SButton}"
                         Grid.Column="0"
+                        IsCancel="True" 
                         Margin="15"
-                        FontSize="26">Да</Button>
+                        FontSize="26" 
+                        Click="Button_Click">Да</Button>
                 <Button Style="{StaticResource SButton}"
                         Grid.Column="1"
                         IsCancel="True" 

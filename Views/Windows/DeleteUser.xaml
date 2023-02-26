@@ -46,8 +46,10 @@
 
                 <Button Style="{StaticResource SButton}"
                         Grid.Column="0"
+                        IsCancel="True" 
                         Margin="15"
-                        FontSize="26">Да</Button>
+                        FontSize="26" 
+                        Click="Button_Click">Да</Button>
                 <Button Style="{StaticResource SButton}"
                         Grid.Column="1"
                         IsCancel="True" 
