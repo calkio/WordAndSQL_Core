@@ -3,7 +3,6 @@ using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +11,7 @@ using WordAndSQL_Core.Entity;
 
 namespace WordAndSQL_Core.Collection
 {
-    class GroupsInUserObservableCollection : ObservableCollection<Groups>
+    internal class GroupSelectedUserInPassportObservableCollection : ObservableCollection<Groups>
     {
         string sqlConnection = "Data Source=CALKIO\\MSSQLSERVER01;Initial Catalog=WordAndSQL;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
@@ -56,7 +55,7 @@ namespace WordAndSQL_Core.Collection
 
         #endregion
 
-        public GroupsInUserObservableCollection()
+        public GroupSelectedUserInPassportObservableCollection()
         {
             listId = GetIdUsersInGroup();
             groups = FillingGridGroups();
@@ -72,9 +71,9 @@ namespace WordAndSQL_Core.Collection
             {
                 using (var connection = new SqlConnection(sqlConnection))
                 {
-                    if (AllUsersUpdateGroupObservableCollection.SelectedUser == null) return null;
+                    if (UsersObservableCollection.SelectedUser == null) return null;
 
-                    var sql = $"SELECT idGroup FROM Users_Groups WHERE idUser={AllUsersUpdateGroupObservableCollection.SelectedUser.id}";//Дает лист ID групп в которых состоит пользователь
+                    var sql = $"SELECT idGroup FROM Users_Groups WHERE idUser={UsersObservableCollection.SelectedUser.id}";//Дает лист ID групп в которых состоит пользователь
 
                     var users = connection.Query<int>(sql).ToList();
 

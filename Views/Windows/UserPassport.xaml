@@ -231,7 +231,7 @@
                       HeadersVisibility="Column"
                       ItemsSource="{Binding Groups}">
                 <DataGrid.DataContext>
-                    <oc:GroupsObservableCollection/>
+                    <oc:GroupSelectedUserInPassportObservableCollection/>
                 </DataGrid.DataContext>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Номер" Width="100" Binding="{Binding Path=Number}"/>
