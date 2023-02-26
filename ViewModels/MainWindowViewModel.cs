@@ -27,12 +27,6 @@ namespace WordAndSQL_Core.ViewModels
 
         string sqlConnection = "Data Source=CALKIO\\MSSQLSERVER01;Initial Catalog=WordAndSQL;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        #region Текст для окна удаления
-
-        static public string textDelete { get; set; }
-
-        #endregion
-
         #region Команды
 
         #region Команда открытия окна добавления
@@ -91,8 +85,7 @@ namespace WordAndSQL_Core.ViewModels
 
         private void OnDeleteGroupApplicationCommandExecuted(object p)
         {
-            textDelete = "Вы действительно хотите удалить выбранную группу?";
-            Delete delete = new Delete();
+            DeleteGroup delete = new DeleteGroup();
             delete.Owner = Application.Current.MainWindow;
             delete.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             delete.ShowDialog();
@@ -108,8 +101,7 @@ namespace WordAndSQL_Core.ViewModels
 
         private void OnDeleteUserApplicationCommandExecuted(object p)
         {
-            textDelete = "Вы действительно хотите удалить выбранного человека?";
-            Delete delete = new Delete();
+            DeleteUser delete = new DeleteUser();
             delete.Owner = Application.Current.MainWindow;
             delete.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             delete.ShowDialog();

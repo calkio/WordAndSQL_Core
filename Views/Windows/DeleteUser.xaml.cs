@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace WordAndSQL_Core.Views.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для Delete.xaml
+    /// Логика взаимодействия для DeleteUser.xaml
     /// </summary>
-    public partial class Delete : Window
+    public partial class DeleteUser : Window
     {
-        public Delete()
+        public DeleteUser()
         {
             InitializeComponent();
         }
