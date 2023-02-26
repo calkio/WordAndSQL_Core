@@ -45,15 +45,17 @@
                                        VerticalAlignment="Center" 
                                        Margin="10">Поиск по названию группы:</TextBlock>
                             <TextBox Style="{StaticResource STextBox}" 
-                                    MinWidth="150"
-                                    Height="25" Width="350"
-                                    VerticalAlignment="Center"
-                                    VerticalContentAlignment="Center"/>
+                                     Name="FindGroupTB"
+                                     MinWidth="150"
+                                     Height="25" Width="350"
+                                     VerticalAlignment="Center"
+                                     VerticalContentAlignment="Center"
+                                     Text="{Binding TextFindGroup}" TextChanged="FindGroupTB_TextChanged"/>
                             <Button Style="{StaticResource SButton}" 
                                     Width="22" Height="22" 
                                     Margin="7"
                                     VerticalContentAlignment="Center"
-                                    VerticalAlignment="Center" HorizontalAlignment="Left">
+                                    VerticalAlignment="Center" HorizontalAlignment="Left" Click="Button_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <ContentControl>
                                             <Image Source="/img/WindowUpdate/lupa.png"></Image>
@@ -64,6 +66,7 @@
 
                         <!--DataGrid-->
                         <DataGrid Grid.Row="1"
+                                  Name="GroupGrid"
                                   Style="{StaticResource SDataGrid}"
                                   CellStyle="{StaticResource CellCenterStyle}"
                                   Margin="0,5,0,0" 
@@ -164,17 +167,18 @@
                             <TextBlock TextWrapping="Wrap" 
                                        FontSize="14" 
                                        VerticalAlignment="Center" 
-                                       Margin="10">Поиск слушателя:</TextBlock>
+                                       Margin="10">Поиск слушателя по ФИО:</TextBlock>
                             <TextBox Style="{StaticResource STextBox}" 
-                                    MinWidth="150"
-                                    Height="25" Width="350"
-                                    VerticalAlignment="Center"
-                                    VerticalContentAlignment="Center"/>
+                                     Name="FindUserTB"
+                                     MinWidth="150"
+                                     Height="25" Width="350"
+                                     VerticalAlignment="Center"
+                                     VerticalContentAlignment="Center" TextChanged="FindUserTB_TextChanged"/>
                             <Button Style="{StaticResource SButton}" 
                                     Width="22" Height="22" 
                                     Margin="7"
                                     VerticalContentAlignment="Center"
-                                    VerticalAlignment="Center" HorizontalAlignment="Left">
+                                    VerticalAlignment="Center" HorizontalAlignment="Left" Click="Button_Click_1">
                                 <StackPanel Orientation="Horizontal">
                                     <ContentControl>
                                         <Image Source="/img/WindowUpdate/lupa.png"></Image>

@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using System.Windows;
 using WordAndSQL_Core.ViewModels.Base;
 using WordAndSQL_Core.Infastructure.Commands;
 using WordAndSQL_Core.Views.Windows;
 using Microsoft.Data.SqlClient;
-using WordAndSQL_Core.Entity;
 using Dapper;
-using MySql.Data.MySqlClient;
-using WordAndSQL_Core.Infastructure.Commands.Base;
-using Google.Protobuf.WellKnownTypes;
-using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
-using System.ComponentModel;
-using System.Collections.Specialized;
 using WordAndSQL_Core.Collection;
+using System.Linq;
+using WordAndSQL_Core.Entity;
+using System.Collections.ObjectModel;
 
 namespace WordAndSQL_Core.ViewModels
 {
@@ -26,6 +16,26 @@ namespace WordAndSQL_Core.ViewModels
     {
 
         string sqlConnection = "Data Source=CALKIO\\MSSQLSERVER01;Initial Catalog=WordAndSQL;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+        #region Свойства
+
+        #region Текст в текстбоксе, по которому идет поиск группы
+
+        static private string _textFindGroup;
+
+        static public string TextFindGroup { get => _textFindGroup; set => _textFindGroup = value; }
+
+        #endregion
+
+        #region Текст в текстбоксе, по которому идет поиск пользователя
+
+        static private string _textFindUser;
+
+        static public string TextFindUser { get => _textFindUser; set => _textFindUser = value; }
+
+        #endregion
+
+        #endregion
 
         #region Команды
 
@@ -105,6 +115,78 @@ namespace WordAndSQL_Core.ViewModels
             delete.Owner = Application.Current.MainWindow;
             delete.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             delete.ShowDialog();
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Методы
+
+        #region Поиск группы
+
+        /// <summary>
+        /// Поиск группы по нажатию на лупу и при вводе текста
+        /// </summary>
+        public void FindGroup()
+        {
+            try
+            {
+                using (var connection = new SqlConnection(sqlConnection))
+                {
+                    var sql = $"SELECT * FROM Groups WHERE FirstName LIKE '%{_textFindGroup}%'";
+
+                    var groups = connection.Query<Groups>(sql).ToList();
+
+                    var groupsOC = new ObservableCollection<Groups>();
+                    foreach (var item in groups)
+                    {
+                        groupsOC.Add(item);
+                    }
+
+                    GroupsObservableCollection.Groups = groupsOC;
+                }
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        #endregion
+
+        #region Поиск пользователя
+
+        /// <summary>
+        /// Поиск пользователя по нажатию на лупу и при вводе текста
+        /// </summary>
+        public void FindUser()
+        {
+            try
+            {
+                using (var connection = new SqlConnection(sqlConnection))
+                {
+                    string sql;
+
+                    //если пустое поле, то будет выводиться и пользователи без ФИО
+                    if (_textFindUser != "") sql = $"SELECT * FROM Users WHERE FirstName LIKE '%{_textFindUser}%' or SecondName LIKE '%{_textFindUser}%' or Surname LIKE '%{_textFindUser}%'";
+                    else sql = $"SELECT * FROM Users";
+
+                    var users = connection.Query<Users>(sql).ToList();
+
+                    var usersOC = new ObservableCollection<Users>();
+                    foreach (var item in users)
+                    {
+                        usersOC.Add(item);
+                    }
+
+                    UsersObservableCollection.Users = usersOC;
+                }
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         #endregion

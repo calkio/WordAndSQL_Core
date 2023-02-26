@@ -45,5 +45,39 @@ namespace WordAndSQL_Core
             updateGroup.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             updateGroup.ShowDialog();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindowViewModel mainWindowviewModel = new MainWindowViewModel();
+            mainWindowviewModel.FindGroup();
+
+            GroupGrid.ItemsSource = GroupsObservableCollection.Groups;
+        }
+
+        private void FindGroupTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            MainWindowViewModel mainWindowviewModel = new MainWindowViewModel();
+            MainWindowViewModel.TextFindGroup = FindGroupTB.Text;
+            mainWindowviewModel.FindGroup();
+
+            GroupGrid.ItemsSource = GroupsObservableCollection.Groups;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainWindowViewModel mainWindowviewModel = new MainWindowViewModel();
+            mainWindowviewModel.FindUser();
+
+            UserGrid.ItemsSource = UsersObservableCollection.Users;
+        }
+
+        private void FindUserTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            MainWindowViewModel mainWindowviewModel = new MainWindowViewModel();
+            MainWindowViewModel.TextFindUser = FindUserTB.Text;
+            mainWindowviewModel.FindUser();
+
+            UserGrid.ItemsSource = UsersObservableCollection.Users;
+        }
     }
 }

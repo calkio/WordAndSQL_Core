@@ -41,8 +41,6 @@ namespace WordAndSQL_Core.ViewModels
 
                     var users = connection.Query(sql);
 
-                    UsersObservableCollection usersObservableCollection = new UsersObservableCollection();
-
                     MessageBox.Show("Сохранения изменины!", "Сообщение!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
@@ -64,8 +62,6 @@ namespace WordAndSQL_Core.ViewModels
                     var sql = $"UPDATE Users SET SecondName='{SelectedUser.SecondName}', FirstName='{SelectedUser.FirstName}', Surname='{SelectedUser.Surname}', Numder='{SelectedUser.Numder}', BirthDate='{SelectedUser.BirthDate}', Telephone='{SelectedUser.Telephone}', Login='{SelectedUser.Login}', Snils='{SelectedUser.Snils}', Citizenship='{SelectedUser.Citizenship}', Gender='{SelectedUser.Gender}', PlaceWork='{SelectedUser.PlaceWork}', Post='{SelectedUser.Post}', Education='{SelectedUser.Education}', Comment='{SelectedUser.Comment}' WHERE id={SelectedUser.id}";
 
                     var users = connection.Query(sql);
-
-                    UsersObservableCollection usersObservableCollection = new UsersObservableCollection();
 
                     MessageBox.Show("Сохранения изменины!", "Сообщение!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
