@@ -23,6 +23,7 @@
     <None Remove="img\WindowUpdate\lupa.png" />
     <None Remove="img\WindowUpdate\save.png" />
     <None Remove="img\WindowUpdate\word.png" />
+    <None Remove="img\WindowUserPassport\iconUpdate.png" />
     <None Remove="img\WindowUserPassport\onePeople.png" />
     <None Remove="img\WindowUserPassport\passport.png" />
     <None Remove="img\WindowUserPassport\save.png" />
@@ -83,6 +84,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\WindowUpdate\word.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\WindowUserPassport\iconUpdate.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\WindowUserPassport\onePeople.png">

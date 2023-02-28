@@ -14,6 +14,15 @@ namespace WordAndSQL_Core.Collection
 
         #region Свойства
 
+        static private bool _isReadOnly = true;
+
+        static public bool IsReadOnly
+        {
+            get => _isReadOnly;
+            set => _isReadOnly = value;
+        }
+
+
         #region Свойство для колекции пользователей
 
         static private ObservableCollection<Users> users = new ObservableCollection<Users>();

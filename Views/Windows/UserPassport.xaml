@@ -58,21 +58,19 @@
                          Text="{Binding SelectedUser.SecondName}"
                          Height="25" 
                          Style="{StaticResource STextBox}"
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Background="{Binding Background}"
                          Margin="0,5,15,5"
                          VerticalContentAlignment="Center">
-                    <TextBox.DataContext>
-                        <oc:UsersObservableCollection/>
-                    </TextBox.DataContext>
                 </TextBox>
                 <TextBlock>Дата рождения</TextBlock>
                 <DatePicker x:Name="BirthDateTB"
                             Text="{Binding SelectedUser.BirthDate, Mode=TwoWay}"
                             Height="25" 
                             Margin="0,5,15,5"
-                            VerticalContentAlignment="Center">
-                    <DatePicker.DataContext>
-                        <oc:UsersObservableCollection/>
-                    </DatePicker.DataContext>
+                            VerticalContentAlignment="Center"
+                            IsEnabled="{Binding IsReadOnlyDP}"
+                            Background="{Binding Background}">
                 </DatePicker>
                 <TextBlock>СНИЛС</TextBlock>
                 <TextBox x:Name="SnilsTB"
@@ -80,10 +78,9 @@
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center">
-                    <TextBox.DataContext>
-                        <oc:UsersObservableCollection/>
-                    </TextBox.DataContext>
+                         VerticalContentAlignment="Center"
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Background="{Binding Background}">
                 </TextBox>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1"
@@ -94,10 +91,9 @@
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center">
-                    <TextBox.DataContext>
-                        <oc:UsersObservableCollection/>
-                    </TextBox.DataContext>
+                         VerticalContentAlignment="Center"
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Background="{Binding Background}">
                 </TextBox>
                 <TextBlock>Телефон</TextBlock>
                 <TextBox x:Name="PhoneTB"
@@ -105,10 +101,9 @@
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center">
-                    <TextBox.DataContext>
-                        <oc:UsersObservableCollection/>
-                    </TextBox.DataContext>
+                         VerticalContentAlignment="Center"
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Background="{Binding Background}">
                 </TextBox>
                 <TextBlock>Гражданство</TextBlock>
                 <TextBox x:Name="CitizenshipTB"
@@ -116,10 +111,9 @@
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center">
-                    <TextBox.DataContext>
-                        <oc:UsersObservableCollection/>
-                    </TextBox.DataContext>
+                         VerticalContentAlignment="Center"
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Background="{Binding Background}">
                 </TextBox>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="2"
@@ -130,10 +124,9 @@
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center">
-                    <TextBox.DataContext>
-                        <oc:UsersObservableCollection/>
-                    </TextBox.DataContext>
+                         VerticalContentAlignment="Center"
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Background="{Binding Background}">
                 </TextBox>
                 <TextBlock>Логин</TextBlock>
                 <TextBox x:Name="LoginTB"
@@ -141,10 +134,9 @@
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center">
-                    <TextBox.DataContext>
-                        <oc:UsersObservableCollection/>
-                    </TextBox.DataContext>
+                         VerticalContentAlignment="Center"
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Background="{Binding Background}">
                 </TextBox>
                 <TextBlock>Пол</TextBlock>
                 <TextBox x:Name="GenderTB"
@@ -152,10 +144,9 @@
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,15,5"
-                         VerticalContentAlignment="Center">
-                    <TextBox.DataContext>
-                        <oc:UsersObservableCollection/>
-                    </TextBox.DataContext>
+                         VerticalContentAlignment="Center"
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Background="{Binding Background}">
                 </TextBox>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="3"
@@ -166,21 +157,22 @@
                          Height="25" 
                          Style="{StaticResource STextBox}"
                          Margin="0,5,0,5"
-                         VerticalContentAlignment="Center">
-                    <TextBox.DataContext>
-                        <oc:UsersObservableCollection/>
-                    </TextBox.DataContext>
+                         VerticalContentAlignment="Center"
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Background="{Binding Background}">
                 </TextBox>
                 <Button Style="{StaticResource SButton}"
                         Height="40"
-                        Margin="15" Click="Button_Click">
+                        Margin="0,15,0,15" Click="Button_Click">
                     <StackPanel Orientation="Horizontal">
-                        <ContentControl Width="17" Height="17" Margin="2">
-                            <Image Source="/img/WindowUserPassport/save.png"></Image>
+                        <ContentControl Width="25" Height="25" Margin="2">
+                            <Image Source="/img/WindowUserPassport/iconUpdate.png"></Image>
                         </ContentControl>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Margin="2" 
-                           FontSize="12">Сохранить</TextBlock>
+                        <TextBlock Name="textButtonTB"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Margin="2" 
+                                   FontSize="12"
+                                   Text="{Binding TextButton}"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -264,10 +256,9 @@
                              Height="70" 
                              Style="{StaticResource STextBox}"
                              Margin="0,5,15,5"
-                             AcceptsReturn = "True">
-                        <TextBox.DataContext>
-                            <oc:UsersObservableCollection/>
-                        </TextBox.DataContext>
+                             AcceptsReturn = "True"
+                             IsReadOnly="{Binding IsReadOnlyMain}"
+                             Background="{Binding BackgroundMain}">
                     </TextBox>
                     <TextBlock>Должность:</TextBlock>
                     <TextBox x:Name="PostTB"
@@ -275,10 +266,9 @@
                              Height="70" 
                              Style="{StaticResource STextBox}"
                              Margin="0,5,15,5"
-                             AcceptsReturn = "True">
-                        <TextBox.DataContext>
-                            <oc:UsersObservableCollection/>
-                        </TextBox.DataContext>
+                             AcceptsReturn = "True"
+                             IsReadOnly="{Binding IsReadOnlyMain}"
+                             Background="{Binding BackgroundMain}">
                     </TextBox>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
@@ -289,10 +279,9 @@
                              Height="70" 
                              Style="{StaticResource STextBox}"
                              Margin="0,5,15,5"
-                             AcceptsReturn = "True">
-                        <TextBox.DataContext>
-                            <oc:UsersObservableCollection/>
-                        </TextBox.DataContext>
+                             AcceptsReturn = "True"
+                             IsReadOnly="{Binding IsReadOnlyMain}"
+                             Background="{Binding BackgroundMain}">
                     </TextBox>
                     <TextBlock>Примечания:</TextBlock>
                     <TextBox x:Name="CommentTB"
@@ -300,10 +289,9 @@
                              Height="70" 
                              Style="{StaticResource STextBox}"
                              Margin="0,5,15,5"
-                             AcceptsReturn = "True">
-                        <TextBox.DataContext>
-                            <oc:UsersObservableCollection/>
-                        </TextBox.DataContext>
+                             AcceptsReturn = "True"
+                             IsReadOnly="{Binding IsReadOnlyMain}"
+                             Background="{Binding BackgroundMain}">
                     </TextBox>
                 </StackPanel>
             </Grid>
@@ -315,11 +303,13 @@
                 Margin="15,10,15,10" Click="Button_Click_1" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
                 <ContentControl Width="25" Height="25" Margin="2">
-                    <Image Source="/img/WindowUserPassport/save.png"></Image>
+                    <Image Source="/img/WindowUserPassport/iconUpdate.png"></Image>
                 </ContentControl>
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                <TextBlock Name="textMainButtonTB"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
                            Margin="2" 
-                           FontSize="20">Сохранить</TextBlock>
+                           FontSize="20"
+                           Text="{Binding TextButton}"/> 
             </StackPanel>
         </Button>
     </Grid>
