@@ -61,7 +61,7 @@
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right"
                            Margin="15,0,0,0">Период обучения : с</TextBlock>
                 <DatePicker Height="25" Width="119" 
-                            Text="{Binding SelectedGroup.StartDate}"
+                            Text="{Binding SelectedGroup.StartDate, Mode=TwoWay}"
                             VerticalContentAlignment="Center" 
                             VerticalAlignment="Center"
                             BorderThickness="0,0,0,2"  
@@ -72,7 +72,7 @@
                 </DatePicker>
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right">по</TextBlock>
                 <DatePicker Height="25" Width="119" 
-                            Text="{Binding SelectedGroup.StartDate}"
+                            Text="{Binding SelectedGroup.EndDate, Mode=TwoWay}"
                             VerticalContentAlignment="Center"
                             VerticalAlignment="Center" HorizontalAlignment="Left"
                             BorderThickness="0,0,0,2"  
