@@ -168,9 +168,7 @@ namespace WordAndSQL_Core.ViewModels
                 {
                     string sql;
 
-                    //если пустое поле, то будет выводиться и пользователи без ФИО
-                    if (_textFindUser != "") sql = $"SELECT * FROM Users WHERE FirstName LIKE '%{_textFindUser}%' or SecondName LIKE '%{_textFindUser}%' or Surname LIKE '%{_textFindUser}%'";
-                    else sql = $"SELECT * FROM Users";
+                    sql = $"SELECT * FROM Users WHERE FirstName LIKE '%{_textFindUser}%' or SecondName LIKE '%{_textFindUser}%' or Surname LIKE '%{_textFindUser}%'";
 
                     var users = connection.Query<Users>(sql).ToList();
 

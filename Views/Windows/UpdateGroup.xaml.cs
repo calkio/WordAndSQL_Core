@@ -11,9 +11,19 @@ namespace WordAndSQL_Core.Views.Windows
     /// </summary>
     public partial class UpdateGroup : Window
     {
+        UpdateGroupViewModel updateGroupViewModel = new UpdateGroupViewModel();
+
         public UpdateGroup()
         {
             InitializeComponent();
+        }
+
+        #region Методы
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            updateGroupViewModel.SaveTextBox();
+            Init();
         }
 
         private void UserGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -37,5 +47,50 @@ namespace WordAndSQL_Core.Views.Windows
             var allUsersUpdateGroupObservableCollection = new AllUsersUpdateGroupObservableCollection();
             UserGrid.ItemsSource = AllUsersUpdateGroupObservableCollection.Users;
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UsersInGroupObservableCollection.TextFind = FindUsers.Text;
+            
+            var usersInGroupObservableCollection = new UsersInGroupObservableCollection();
+            UsersInGroupObservableCollection.Users = usersInGroupObservableCollection.FindUsersInGroup();
+
+            UsersInSelectedGroup.ItemsSource = UsersInGroupObservableCollection.Users;
+
+            AllUsersUpdateGroupObservableCollection.TextFind = FindUsers.Text;
+
+            var allUsersUpdateGroupObservableCollection = new AllUsersUpdateGroupObservableCollection();
+            AllUsersUpdateGroupObservableCollection.Users = allUsersUpdateGroupObservableCollection.FindUsersOutsideGroup();
+            AllUsersUpdateGroupObservableCollection.Users = allUsersUpdateGroupObservableCollection.DeleteItemInCollection();
+
+            UserGrid.ItemsSource = AllUsersUpdateGroupObservableCollection.Users;
+        }
+
+        #endregion
+
+        #region Доп методы
+
+        private void Init()
+        {
+            Number.Text = updateGroupViewModel.SelectedGroup.Number;
+            Number.IsReadOnly = updateGroupViewModel.IsReadOnly;
+            Number.Background = updateGroupViewModel.Background;
+
+            Name.Text = updateGroupViewModel.SelectedGroup.FirstName;
+            Name.IsReadOnly = updateGroupViewModel.IsReadOnly;
+            Name.Background = updateGroupViewModel.Background;
+
+            StartDate.Text = updateGroupViewModel.SelectedGroup.StartDate;
+            StartDate.IsEnabled = updateGroupViewModel.IsReadOnlyDP;
+            StartDate.Background = updateGroupViewModel.Background;
+
+            EndDate.Text = updateGroupViewModel.SelectedGroup.EndDate;
+            EndDate.IsEnabled = updateGroupViewModel.IsReadOnlyDP;
+            EndDate.Background = updateGroupViewModel.Background;
+        }
+
+        #endregion
+
+        
     }
 }

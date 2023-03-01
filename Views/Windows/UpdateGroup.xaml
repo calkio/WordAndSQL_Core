@@ -43,13 +43,13 @@
                 <TextBlock Grid.Column="0"
                            VerticalAlignment="Center"
                            Margin="15,0,0,0">Номер:</TextBlock>
-                <TextBox Grid.Column="1" 
+                <TextBox Name="Number"
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Background="{Binding Background}"
+                         Grid.Column="1" 
                          Text="{Binding SelectedGroup.Number}"
                          Height="25" Width="250"
                          VerticalContentAlignment="Center" HorizontalAlignment="Left">
-                    <TextBox.DataContext>
-                        <oc:GroupsObservableCollection/>
-                    </TextBox.DataContext>
                 </TextBox>
                 <TextBlock Grid.Column="2"
                            VerticalAlignment="Center" HorizontalAlignment="Right"
@@ -60,44 +60,44 @@
             <DockPanel Grid.Row="1" Grid.Column="0">
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right"
                            Margin="15,0,0,0">Период обучения : с</TextBlock>
-                <DatePicker Height="25" Width="119" 
+                <DatePicker Name="StartDate"
+                            IsEnabled="{Binding IsReadOnlyDP}"
+                            Background="{Binding Background}"
+                            Height="25" Width="119" 
                             Text="{Binding SelectedGroup.StartDate, Mode=TwoWay}"
                             VerticalContentAlignment="Center" 
                             VerticalAlignment="Center"
                             BorderThickness="0,0,0,2"  
                             Margin="10,0,10,0">
-                    <DatePicker.DataContext>
-                        <oc:GroupsObservableCollection/>
-                    </DatePicker.DataContext>
                 </DatePicker>
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right">по</TextBlock>
-                <DatePicker Height="25" Width="119" 
+                <DatePicker Name="EndDate"
+                            IsEnabled="{Binding IsReadOnlyDP}"
+                            Background="{Binding Background}"
+                            Height="25" Width="119" 
                             Text="{Binding SelectedGroup.EndDate, Mode=TwoWay}"
                             VerticalContentAlignment="Center"
                             VerticalAlignment="Center" HorizontalAlignment="Left"
                             BorderThickness="0,0,0,2"  
                             Margin="10,0,10,0">
-                    <DatePicker.DataContext>
-                        <oc:GroupsObservableCollection/>
-                    </DatePicker.DataContext>
                 </DatePicker>
             </DockPanel>
 
             <DockPanel Grid.Row="0" Grid.Column="1" 
                        Grid.RowSpan="2">
-                <TextBox Margin="0,5,0,7" 
+                <TextBox Name="Name"
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Background="{Binding Background}"
+                         Margin="0,5,0,7" 
                          Text="{Binding SelectedGroup.FirstName}"
                          AcceptsReturn = "True">
-                    <TextBox.DataContext>
-                        <oc:GroupsObservableCollection/>
-                    </TextBox.DataContext>
                 </TextBox>
             </DockPanel>
 
             <Button Style="{StaticResource SButton}"
                     Grid.Row="0" Grid.Column="2"
                     Grid.RowSpan="2"
-                    Height="30" Width="40">
+                    Height="30" Width="40" Click="Button_Click">
                 <StackPanel Orientation="Horizontal">
                     <ContentControl Margin="2">
                         <Image Source="/img/WindowUpdate/iconUpdate.png"></Image>
@@ -142,8 +142,9 @@
                                    Grid.ColumnSpan="2">
                             <TextBlock VerticalAlignment="Center"
                                        Margin="20">Поиск слушателей:</TextBlock>
-                            <TextBox Height="26" Width="550"
-                                     VerticalContentAlignment="Center" ></TextBox>
+                            <TextBox Name="FindUsers"
+                                     Height="26" Width="550"
+                                     VerticalContentAlignment="Center" TextChanged="TextBox_TextChanged" ></TextBox>
                             <Button Style="{StaticResource SButton}"
                                     Grid.Row="0" Grid.Column="2"
                                     Grid.RowSpan="2"
@@ -196,10 +197,10 @@
                                     Margin="15,0,0,0">
                                 <StackPanel Orientation="Horizontal">
                                     <ContentControl Margin="2">
-                                        <Image Source="/img/WindowUpdate/iconDelete.png"></Image>
+                                        <Image Source="/img/WindowUpdate/onePeople.png"></Image>
                                     </ContentControl>
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
-                               Margin="2">Исключить из списка</TextBlock>
+                                               Margin="2">Карточка</TextBlock>
                                 </StackPanel>
                             </Button>
                         </Grid>
@@ -273,10 +274,10 @@
                                     Margin="0,0,15,0">
                                 <StackPanel Orientation="Horizontal">
                                     <ContentControl Margin="2">
-                                        <Image Source="/img/WindowUpdate/save.png"></Image>
+                                        <Image Source="/img/WindowUpdate/onePeople.png"></Image>
                                     </ContentControl>
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
-                               Margin="2">Сохранить</TextBlock>
+                                               Margin="2">Карточка</TextBlock>
                                 </StackPanel>
                             </Button>
                         </Grid>

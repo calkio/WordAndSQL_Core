@@ -49,6 +49,8 @@ namespace WordAndSQL_Core.ViewModels
         private bool _isReadOnlyMain = true;
 
         public bool IsReadOnlyMain { get => _isReadOnlyMain; set => Set(ref _isReadOnlyMain, value); }
+
+
         #endregion
 
         #region Текст 

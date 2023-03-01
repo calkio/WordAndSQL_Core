@@ -21,6 +21,7 @@
     <None Remove="img\WindowUpdate\iconImport.png" />
     <None Remove="img\WindowUpdate\iconUpdate.png" />
     <None Remove="img\WindowUpdate\lupa.png" />
+    <None Remove="img\WindowUpdate\onePeople.png" />
     <None Remove="img\WindowUpdate\save.png" />
     <None Remove="img\WindowUpdate\word.png" />
     <None Remove="img\WindowUserPassport\iconUpdate.png" />
@@ -78,6 +79,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\WindowUpdate\lupa.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\WindowUpdate\onePeople.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="img\WindowUpdate\save.png">

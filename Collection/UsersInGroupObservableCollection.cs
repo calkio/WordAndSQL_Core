@@ -55,6 +55,14 @@ namespace WordAndSQL_Core.Collection
 
         #endregion
 
+        #region Текст в текстбоксе, по которому идет поиск 
+
+        static private string _textFind;
+
+        static public string TextFind { get => _textFind; set => _textFind = value; }
+
+        #endregion
+
         #endregion
 
         public UsersInGroupObservableCollection()
@@ -112,6 +120,43 @@ namespace WordAndSQL_Core.Collection
                     }
 
                     return users;
+                }
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                return new ObservableCollection<Users>();
+            }
+        }
+
+
+        /// <summary>
+        /// Поиск пользователей по тексту в textBox
+        /// </summary>
+        /// <returns></returns>
+        public ObservableCollection<Users> FindUsersInGroup()
+        {
+            try
+            {
+                using (var connection = new SqlConnection(sqlConnection))
+                {
+                    if (listId == null || listId.Count == 0) return new ObservableCollection<Users>();
+                    if (_textFind == null || _textFind == "") return FillingGridUsers();
+
+                    var inList = "(" + string.Join(", ", listId.Select(t => t)) + ")";
+
+                    var sql = $"SELECT * FROM Users WHERE (FirstName LIKE '%{_textFind}%' or SecondName LIKE '%{_textFind}%' or Surname LIKE '%{_textFind}%') and id IN{inList}";
+
+                    var users = connection.Query<Users>(sql).ToList();
+
+                    var usersOC = new ObservableCollection<Users>();
+                    foreach (var item in users)
+                    {
+                        usersOC.Add(item);
+                    }
+
+                    return usersOC;
                 }
             }
             catch (System.Exception)

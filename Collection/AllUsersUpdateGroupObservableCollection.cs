@@ -45,6 +45,14 @@ namespace WordAndSQL_Core.Collection
 
         #endregion
 
+        #region Текст в текстбоксе, по которому идет поиск 
+
+        static private string _textFind;
+
+        static public string TextFind { get => _textFind; set => _textFind = value; }
+
+        #endregion
+
         #endregion
 
         public AllUsersUpdateGroupObservableCollection()
@@ -84,7 +92,11 @@ namespace WordAndSQL_Core.Collection
             }
         }
 
-        private ObservableCollection<Users> DeleteItemInCollection()
+        /// <summary>
+        /// Удаление айтемов из колекции, которые уже есть в другой таблице
+        /// </summary>
+        /// <returns></returns>
+        public ObservableCollection<Users> DeleteItemInCollection()
         {
             var usersCollection = new ObservableCollection<Users>();
             bool isAdd = true;
@@ -100,6 +112,39 @@ namespace WordAndSQL_Core.Collection
             }
 
             return usersCollection;
+        }
+
+        /// <summary>
+        /// Поиск пользователей по тексту в textBox
+        /// </summary>
+        /// <returns></returns>
+        public ObservableCollection<Users> FindUsersOutsideGroup()
+        {
+            try
+            {
+                using (var connection = new SqlConnection(sqlConnection))
+                {
+                    if (_textFind == null || _textFind == "") return FillingGridUsers();
+
+                    var sql = $"SELECT * FROM Users WHERE FirstName LIKE '%{_textFind}%' or SecondName LIKE '%{_textFind}%' or Surname LIKE '%{_textFind}%'";
+
+                    var users = connection.Query<Users>(sql).ToList();
+
+                    var usersOC = new ObservableCollection<Users>();
+                    foreach (var item in users)
+                    {
+                        usersOC.Add(item);
+                    }
+
+                    return usersOC;
+                }
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+                return new ObservableCollection<Users>();
+            }
         }
     }
 }

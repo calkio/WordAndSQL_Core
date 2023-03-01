@@ -6,12 +6,47 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 using WordAndSQL_Core.Collection;
 using WordAndSQL_Core.ViewModels.Base;
+using System.Windows.Media;
+using WordAndSQL_Core.Entity;
+using System.Collections.ObjectModel;
+using System.Linq;
+using Google.Protobuf.WellKnownTypes;
 
 namespace WordAndSQL_Core.ViewModels
 {
     class UpdateGroupViewModel : ViewModel
     {
         string sqlConnection = "Data Source=CALKIO\\MSSQLSERVER01;Initial Catalog=WordAndSQL;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+        #region Свойства
+
+        public Groups SelectedGroup { get; set; }
+
+        #region ReadOnly для полей
+
+        private bool _isReadOnly = true;
+
+        public bool IsReadOnly { get => _isReadOnly; set => Set(ref _isReadOnly, value); }
+
+
+        /// <summary>
+        /// DatePicker
+        /// </summary>
+        private bool _isReadOnlyDP = false;
+
+        public bool IsReadOnlyDP { get => _isReadOnlyDP; set => Set(ref _isReadOnlyDP, value); }
+
+        #endregion
+
+        #region Фон для TextBox
+
+        private Brush _background = new SolidColorBrush(Colors.LightGray);
+
+        public Brush Background { get => _background; set => Set(ref _background, value); }
+
+        #endregion
+
+        #endregion
 
         #region Команды
 
@@ -34,6 +69,42 @@ namespace WordAndSQL_Core.ViewModels
         #endregion
 
         #region Методы
+
+        #region Взаимодействие с полями
+
+        public void SaveTextBox()
+        {
+            if (_isReadOnly)
+            {
+                _isReadOnly = false;
+                _isReadOnlyDP = true;
+                _background = new SolidColorBrush(Colors.White);
+            }
+            else
+            {
+                try
+                {
+                    using (var connection = new SqlConnection(sqlConnection))
+                    {
+                        var sql = $"UPDATE Groups SET Number='{SelectedGroup.Number}' ,FirstName='{SelectedGroup.FirstName}', StartDate='{SelectedGroup.StartDate}', EndDate='{SelectedGroup.EndDate}' WHERE id={SelectedGroup.id}";
+
+                        var group = connection.Query(sql);
+
+                        MessageBox.Show("Сохранения изменины!", "Сообщение!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+
+                    _isReadOnly = true;
+                    _isReadOnlyDP = false;
+                    _background = new SolidColorBrush(Colors.LightGray);
+                }
+                catch (System.Exception)
+                {
+                    MessageBox.Show("Ошибка подключения к базе данных!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
+        }
+
+        #endregion
 
         #region Присваивание пользователю его группу
 
@@ -133,6 +204,8 @@ namespace WordAndSQL_Core.ViewModels
             OpenImportApplicationCommand = new LambdaCommand(OnImportApplicationCommandExecuted, CanImportApplicationCommandExecute);
 
             #endregion
+
+            SelectedGroup = GroupsObservableCollection.SelectedGroup;
         }
     }
 }
