@@ -44,6 +44,17 @@ namespace WordAndSQL_Core.Views.Windows
             InitMain();
         }
 
+        /// <summary>
+        /// Карточка
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            UserPassportModel userPassportModel = new UserPassportModel();
+            userPassportModel.UpdatePassport(@"D:\projects\WordAndSQL_Core\DOC\UserPassportDOC.docx", "Сертификация ", "cертификация ");
+        }
+
         #endregion
 
         #region Доп методы
@@ -130,22 +141,7 @@ namespace WordAndSQL_Core.Views.Windows
             CommentTB.Background = userPassportViewModel.Background;
         }
 
-        private void OpenDB()
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Word97-2003 files(*.doc)|*.doc|Word2007-2010 files (*.docx)|*.docx|All files (*.*)|*.*";
-            dialog.Title = "Select a DOC file";
-            dialog.Multiselect = false;
-            dialog.InitialDirectory = System.IO.Path.GetFullPath(@"..\..\..\..\..\..\Data");
-        }
-
         #endregion
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            UserPassportModel userPassportModel = new UserPassportModel();
-            userPassportModel.UpdatePassport(@"D:\projects\WordAndSQL_Core\DOC\UserPassportDOC.docx", "Сертификация ", "cертификация ");
-
-        }
     }
 }

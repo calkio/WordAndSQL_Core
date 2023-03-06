@@ -309,7 +309,7 @@
                            HorizontalAlignment="Center" VerticalAlignment="Center"
                            Margin="2" 
                            FontSize="20"
-                           Text="{Binding TextButton}"/> 
+                           Text="{Binding TextButtonMain}"/> 
             </StackPanel>
         </Button>
     </Grid>

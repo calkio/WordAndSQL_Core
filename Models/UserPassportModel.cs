@@ -36,6 +36,10 @@ namespace WordAndSQL_Core.Models
             document.Replace( "SURNAME", UsersObservableCollection.SelectedUser.Surname, false, true);
             document.Replace( "BIRTHDAY", UsersObservableCollection.SelectedUser.BirthDate, false, true);
             document.Replace( "PHONE", UsersObservableCollection.SelectedUser.Telephone, false, true);
+            document.Replace( "EDUCATION", UsersObservableCollection.SelectedUser.Education, false, true);
+            document.Replace( "POST", UsersObservableCollection.SelectedUser.Post, false, true);
+            document.Replace( "PLACEWORK", UsersObservableCollection.SelectedUser.PlaceWork, false, true);
+            document.Replace( "COMMENT", UsersObservableCollection.SelectedUser.Comment, false, true);
         }
     }
 }

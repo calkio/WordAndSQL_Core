@@ -171,7 +171,7 @@ namespace WordAndSQL_Core.ViewModels
                     _background = new SolidColorBrush(Colors.LightGray);
 
                     _isReadOnlyMain = false;
-                    _textButtonMain = "Сохранить";
+                    _textButtonMain = "Редактировать";
                     _backgroundMain = new SolidColorBrush(Colors.White);
                 }
                 catch (System.Exception)
