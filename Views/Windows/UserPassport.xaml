@@ -186,7 +186,7 @@
                 <Button Style="{StaticResource SButton}"
                         Width="150" Height="40" 
                         VerticalAlignment="Center" 
-                        Margin="20 0">
+                        Margin="20 0" Click="Button_Click_2">
                     <StackPanel Orientation="Horizontal">
                         <ContentControl Width="25" Height="25" Margin="2">
                             <Image Source="/img/WindowUserPassport/passport.png"></Image>
